@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://simplified-ai-markets.github.io/sitemap.xml

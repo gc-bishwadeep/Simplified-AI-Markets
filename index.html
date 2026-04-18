@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simplified AI Markets — Algo Trading & AI Investing for Indian Investors</title>
+  <meta name="description" content="Learn algorithmic trading and AI-powered investing for Indian stock markets. Step-by-step guides, strategies, backtesting tutorials, and market analysis for NSE and BSE traders.">
+  <meta name="keywords" content="algo trading India, algorithmic trading NSE, AI trading India, NIFTY algo strategy, BSE automated trading, zerodha algo, quantitative trading India">
+  <meta name="author" content="Simplified AI Markets">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://simplified-ai-markets.github.io/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Simplified AI Markets — Algo Trading & AI Investing">
+  <meta property="og:description" content="Step-by-step algo trading and AI investing guides for Indian stock market investors.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://simplified-ai-markets.github.io/">
+  <meta property="og:image" content="https://simplified-ai-markets.github.io/images/og-cover.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Simplified AI Markets">
+  <meta name="twitter:description" content="Algo trading and AI investing guides for Indian investors.">
+
+  <!-- Schema.org structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Simplified AI Markets",
+    "url": "https://simplified-ai-markets.github.io/",
+    "description": "Algorithmic trading and AI investing guides for Indian stock market investors",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Simplified AI Markets"
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://simplified-ai-markets.github.io/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- Google AdSense placeholder — replace with your publisher ID -->
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-mark">SAM</span>
+        <span class="logo-text">Simplified AI<br><strong>Markets</strong></span>
+      </a>
+      <nav class="main-nav" id="main-nav">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="blog/algo-trading-beginner-guide.html" class="nav-link">Algo Trading</a>
+        <a href="#ai-section" class="nav-link">AI & Markets</a>
+        <a href="#tools" class="nav-link">Tools</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#newsletter" class="nav-cta">Free Newsletter</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="grid-overlay"></div>
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+    </div>
+    <div class="container hero-inner">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        NSE · BSE · NIFTY · AI-Powered Analysis
+      </div>
+      <h1 class="hero-title">
+        Where <em>Artificial Intelligence</em><br>Meets the Indian<br>Stock Market
+      </h1>
+      <p class="hero-sub">Step-by-step guides on algorithmic trading, AI-powered strategies, and systematic investing — built for Indian retail investors. From your first moving average to a fully automated trading system.</p>
+      <div class="hero-actions">
+        <a href="blog/algo-trading-beginner-guide.html" class="btn-primary">Start Learning Algo Trading →</a>
+        <a href="#newsletter" class="btn-ghost">Get Weekly Insights Free</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat"><span class="hstat-num">10</span><span class="hstat-lbl">In-depth guides</span></div>
+        <div class="hstat-div"></div>
+        <div class="hstat"><span class="hstat-num">50%+</span><span class="hstat-lbl">NSE is algorithmic</span></div>
+        <div class="hstat-div"></div>
+        <div class="hstat"><span class="hstat-num">Free</span><span class="hstat-lbl">Always free to read</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AD SLOT 1 (leaderboard) ============ -->
+  <div class="container ad-slot ad-leaderboard">
+    <div class="ad-label">Advertisement</div>
+    <!-- AdSense leaderboard 728x90 -->
+    <!-- <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins> -->
+    <div class="ad-placeholder">Ad · 728×90 — Google AdSense Leaderboard</div>
+  </div>
+
+  <!-- ============ FEATURED: ALGO SERIES ============ -->
+  <section class="section" id="algo-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Featured Series</div>
+        <h2 class="section-title">Algo Trading: Beginner to Pro</h2>
+        <p class="section-sub">A complete 10-part series taking you from "what is an algorithm" to running a fully automated trading system on NSE — step by step, no finance degree required.</p>
+      </div>
+
+      <div class="series-track">
+        <div class="series-progress">
+          <div class="sp-line"></div>
+        </div>
+        <div class="blog-grid">
+
+          <article class="blog-card blog-card--featured">
+            <div class="bc-number">01</div>
+            <div class="bc-tag">Beginner · 14 min read</div>
+            <h3 class="bc-title">What Is Algo Trading? The Complete Beginner's Guide for Indian Investors</h3>
+            <p class="bc-desc">Algorithmic trading drives 50%+ of NSE volumes. Learn what it is, how it works, the 5 main strategy types, SEBI rules, and exactly what you need to start.</p>
+            <div class="bc-meta">
+              <span class="bc-topics">Trend Following · Mean Reversion · SEBI Rules · Zerodha</span>
+            </div>
+            <a href="blog/algo-trading-beginner-guide.html" class="bc-link">Read guide →</a>
+          </article>
+
+          <article class="blog-card">
+            <div class="bc-number">02</div>
+            <div class="bc-tag">Beginner · 12 min read</div>
+            <h3 class="bc-title">How Algo Trading Works: Order Types, Execution & Market Mechanics</h3>
+            <p class="bc-desc">Market orders vs limit orders, how broker APIs connect to NSE, what slippage costs you, and placing your first algorithmic order.</p>
+            <a href="#" class="bc-link bc-link--soon">Coming soon</a>
+          </article>
+
+          <article class="blog-card">
+            <div class="bc-number">03</div>
+            <div class="bc-tag">Beginner · 15 min read</div>
+            <h3 class="bc-title">Your First Algo Strategy: Moving Averages, RSI & Simple Rule-Based Systems</h3>
+            <p class="bc-desc">Build your first working strategy from scratch — no coding required. Moving average crossovers, RSI rules, and your first live signal on NIFTY.</p>
+            <a href="#" class="bc-link bc-link--soon">Coming soon</a>
+          </article>
+
+          <article class="blog-card">
+            <div class="bc-number">04</div>
+            <div class="bc-tag">Intermediate · 16 min read</div>
+            <h3 class="bc-title">Backtesting 101: Test Your Strategy on 10 Years of NSE Data</h3>
+            <p class="bc-desc">How to test your strategy before risking real money. Avoid curve fitting. Walk-forward analysis. Free backtesting platforms compared.</p>
+            <a href="#" class="bc-link bc-link--soon">Coming soon</a>
+          </article>
+
+          <article class="blog-card">
+            <div class="bc-number">05</div>
+            <div class="bc-tag">Intermediate · 14 min read</div>
+            <h3 class="bc-title">Tools & Platforms: Zerodha Streak, Tradetron, Python & More</h3>
+            <p class="bc-desc">Every platform compared — free vs paid, no-code vs Python, which is best for your skill level and capital size.</p>
+            <a href="#" class="bc-link bc-link--soon">Coming soon</a>
+          </article>
+
+          <article class="blog-card">
+            <div class="bc-number">06</div>
+            <div class="bc-tag">Intermediate · 13 min read</div>
+            <h3 class="bc-title">Risk Management: Position Sizing, Stop Losses & Drawdown Control</h3>
+            <p class="bc-desc">The only guide to risk management you'll ever need as an algo trader. Position sizing formulas, daily loss limits, and protecting your capital.</p>
+            <a href="#" class="bc-link bc-link--soon">Coming soon</a>
+          </article>
+
+          <article class="blog-card">
+            <div class="bc-number">07</div>
+            <div class="bc-tag">Intermediate · 15 min read</div>
+            <h3 class="bc-title">Paper Trading to Live: Deploy Your Algo on NSE Without Losing Money</h3>
+            <p class="bc-desc">The exact process from paper trading to your first real rupee trade. API setup, monitoring, kill switches, and going live safely.</p>
+            <a href="#" class="bc-link bc-link--soon">Coming soon</a>
+          </article>
+
+          <article class="blog-card">
+            <div class="bc-number">08</div>
+            <div class="bc-tag">Advanced · 18 min read</div>
+            <h3 class="bc-title">Advanced Strategies: Mean Reversion, Momentum & Pairs Trading</h3>
+            <p class="bc-desc">Statistical arbitrage, pairs trading HDFC vs ICICI, momentum strategies on Bank NIFTY, and building multi-leg options algos.</p>
+            <a href="#" class="bc-link bc-link--soon">Coming soon</a>
+          </article>
+
+          <article class="blog-card">
+            <div class="bc-number">09</div>
+            <div class="bc-tag">Advanced · 12 min read</div>
+            <h3 class="bc-title">SEBI Rules for Algo Trading: Legal, Compliant & Safe in India</h3>
+            <p class="bc-desc">Everything SEBI has published on algo trading — what's legal, what's not, the 2024 tightening, and how to stay on the right side of the law.</p>
+            <a href="#" class="bc-link bc-link--soon">Coming soon</a>
+          </article>
+
+          <article class="blog-card">
+            <div class="bc-number">10</div>
+            <div class="bc-tag">Pro · 20 min read</div>
+            <h3 class="bc-title">Building a Full Algo System: APIs, Architecture & Scaling to ₹1 Crore+</h3>
+            <p class="bc-desc">Full system architecture — data feeds, strategy engine, risk manager, execution layer, monitoring, and scaling your capital systematically.</p>
+            <a href="#" class="bc-link bc-link--soon">Coming soon</a>
+          </article>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AD SLOT 2 (mid-page rectangle) ============ -->
+  <div class="container ad-slot">
+    <div class="ad-label">Advertisement</div>
+    <div class="ad-placeholder">Ad · 336×280 — Google AdSense Rectangle</div>
+  </div>
+
+  <!-- ============ AI & MARKETS SECTION ============ -->
+  <section class="section section--dark" id="ai-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">AI & Markets</div>
+        <h2 class="section-title">How AI Is Reshaping Indian Markets</h2>
+        <p class="section-sub">Beyond algo trading — understanding how machine learning, NLP, and predictive models are changing how institutions and retail investors operate in NSE and BSE.</p>
+      </div>
+      <div class="ai-cards">
+        <div class="ai-card">
+          <div class="ai-icon">01</div>
+          <h3>AI-powered stock screening</h3>
+          <p>How institutional funds use machine learning to screen 5,000+ NSE stocks in milliseconds — and free tools that let retail investors do the same.</p>
+        </div>
+        <div class="ai-card">
+          <div class="ai-icon">02</div>
+          <h3>Sentiment analysis & news trading</h3>
+          <p>How algorithms read BSE filings, RBI announcements, and news headlines in real time — and how this moves NIFTY before human traders react.</p>
+        </div>
+        <div class="ai-card">
+          <div class="ai-icon">03</div>
+          <h3>NIFTY prediction models</h3>
+          <p>What AI actually says about predicting NIFTY 50 — what works, what doesn't, and what research shows about machine learning in Indian equity markets.</p>
+        </div>
+        <div class="ai-card">
+          <div class="ai-icon">04</div>
+          <h3>Options pricing with AI</h3>
+          <p>How ML models improve on Black-Scholes for NIFTY options — volatility surface modelling, IV prediction, and building smarter options strategies.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TOOLS SECTION ============ -->
+  <section class="section" id="tools">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Free Tools & Resources</div>
+        <h2 class="section-title">Everything You Need to Start</h2>
+        <p class="section-sub">Curated tools, platforms, and resources — free and paid — for every level of algo trader in India.</p>
+      </div>
+      <div class="tools-grid">
+        <div class="tool-card">
+          <div class="tool-cat">Broker APIs</div>
+          <div class="tool-name">Zerodha Kite Connect</div>
+          <div class="tool-desc">India's most popular trading API. ₹2,000/month. Best documentation, largest community.</div>
+          <div class="tool-cost tool-cost--paid">₹2,000/month</div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-cat">Broker APIs</div>
+          <div class="tool-name">Upstox Developer API</div>
+          <div class="tool-desc">Free API access. REST + WebSocket. Good for beginners. Active developer community.</div>
+          <div class="tool-cost tool-cost--free">Free</div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-cat">No-Code Platforms</div>
+          <div class="tool-name">Zerodha Streak</div>
+          <div class="tool-desc">Build algo strategies without code. Direct NSE/BSE execution. ₹0 basic, ₹999 pro.</div>
+          <div class="tool-cost tool-cost--free">Free tier</div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-cat">No-Code Platforms</div>
+          <div class="tool-name">Tradetron</div>
+          <div class="tool-desc">Drag-and-drop strategy builder. Multi-broker support. Free & paid plans.</div>
+          <div class="tool-cost tool-cost--free">Free tier</div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-cat">Backtesting</div>
+          <div class="tool-name">AlgoTest</div>
+          <div class="tool-desc">Options backtesting focused. NSE historical data. Free tier available. Very popular in India.</div>
+          <div class="tool-cost tool-cost--free">Free tier</div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-cat">Python Libraries</div>
+          <div class="tool-name">Backtrader</div>
+          <div class="tool-desc">Open-source Python backtesting framework. Supports NSE data. Most popular for Indian quants.</div>
+          <div class="tool-cost tool-cost--free">Free & open source</div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-cat">Data Sources</div>
+          <div class="tool-name">NSE Historical Data</div>
+          <div class="tool-desc">Free EOD data for all NSE stocks and indices. Direct download from NSE website.</div>
+          <div class="tool-cost tool-cost--free">Free</div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-cat">Data Sources</div>
+          <div class="tool-name">True Data</div>
+          <div class="tool-desc">Premium tick-by-tick data for NSE/BSE. Required for HFT and intraday strategies.</div>
+          <div class="tool-cost tool-cost--paid">₹500–₹2,000/month</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AD SLOT 3 ============ -->
+  <div class="container ad-slot">
+    <div class="ad-label">Advertisement</div>
+    <div class="ad-placeholder">Ad · 728×90 — Google AdSense Leaderboard</div>
+  </div>
+
+  <!-- ============ NEWSLETTER ============ -->
+  <section class="newsletter-section" id="newsletter">
+    <div class="container newsletter-inner">
+      <div class="nl-content">
+        <div class="section-tag">Free Weekly Newsletter</div>
+        <h2 class="nl-title">Stay Ahead of the Algorithm</h2>
+        <p class="nl-sub">Every week: one AI trend affecting Indian markets + one algo trading insight + tools and resources. No spam. No stock tips. Just clear thinking.</p>
+        <ul class="nl-perks">
+          <li>Weekly AI market analysis for NSE & BSE</li>
+          <li>New algo strategies explained simply</li>
+          <li>Free tools and resources every week</li>
+          <li>First access to new guides as they publish</li>
+        </ul>
+      </div>
+      <div class="nl-form">
+        <form action="#" method="POST" id="newsletter-form">
+          <div class="form-group">
+            <label for="nl-name">Your name</label>
+            <input type="text" id="nl-name" name="name" placeholder="Rahul Sharma" required>
+          </div>
+          <div class="form-group">
+            <label for="nl-email">Email address</label>
+            <input type="email" id="nl-email" name="email" placeholder="rahul@gmail.com" required>
+          </div>
+          <button type="submit" class="btn-primary btn-full">Get Free Weekly Insights →</button>
+          <p class="form-note">Free forever. Unsubscribe anytime. No stock tips or spam.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="section" id="about">
+    <div class="container about-inner">
+      <div class="about-text">
+        <div class="section-tag">About</div>
+        <h2 class="section-title">Built for Indian Investors Who Want More Than Tips</h2>
+        <p class="body-text">Simplified AI Markets was created for one reason: most Indian investors are playing a game that has fundamentally changed — without knowing it. Over 50% of NSE trades are now algorithmic. AI is screening stocks, predicting volatility, and executing trades faster than any human can blink.</p>
+        <p class="body-text">This site exists to close that knowledge gap. Every guide here is written to take a complete beginner to a confident, systematic investor — step by step, with real Indian market examples, real platforms, and real numbers.</p>
+        <p class="body-text">No guaranteed returns. No stock tips. No noise. Just clear, honest education about how markets actually work in 2025–26.</p>
+        <div class="about-tags">
+          <span class="atag">NSE & BSE focus</span>
+          <span class="atag">SEBI compliant</span>
+          <span class="atag">No stock tips</span>
+          <span class="atag">Beginner friendly</span>
+          <span class="atag">Free to read</span>
+        </div>
+      </div>
+      <div class="about-stats">
+        <div class="astat">
+          <div class="astat-num">10</div>
+          <div class="astat-lbl">Algo trading guides<br>beginner to pro</div>
+        </div>
+        <div class="astat">
+          <div class="astat-num">100%</div>
+          <div class="astat-lbl">Indian market focus<br>NSE · BSE · SEBI</div>
+        </div>
+        <div class="astat">
+          <div class="astat-num">Free</div>
+          <div class="astat-lbl">All guides free<br>always</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo logo--light">
+          <span class="logo-mark">SAM</span>
+          <span class="logo-text">Simplified AI<br><strong>Markets</strong></span>
+        </a>
+        <p class="footer-tagline">Algorithmic trading and AI investing education for Indian retail investors. NSE · BSE · NIFTY.</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/simplified_markets" target="_blank" rel="noopener" class="social-link">Instagram</a>
+          <a href="https://www.youtube.com/@SimplifiedAIedu" target="_blank" rel="noopener" class="social-link">YouTube</a>
+          <a href="https://www.linkedin.com/in/bishwadeepgc" target="_blank" rel="noopener" class="social-link">LinkedIn</a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div class="fl-col">
+          <div class="fl-title">Algo Trading Series</div>
+          <a href="blog/algo-trading-beginner-guide.html">Blog 1: What Is Algo Trading?</a>
+          <a href="#">Blog 2: Order Types & Execution</a>
+          <a href="#">Blog 3: Your First Strategy</a>
+          <a href="#">Blog 4: Backtesting Guide</a>
+          <a href="#">Blog 5: Tools & Platforms</a>
+        </div>
+        <div class="fl-col">
+          <div class="fl-title">Resources</div>
+          <a href="#tools">Free Tools</a>
+          <a href="#newsletter">Newsletter</a>
+          <a href="#about">About</a>
+          <a href="sitemap.xml">Sitemap</a>
+        </div>
+        <div class="fl-col">
+          <div class="fl-title">Disclosures</div>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Disclaimer</a>
+          <a href="#">Advertise Here</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2025–26 Simplified AI Markets. For educational purposes only. Not investment advice. We may earn affiliate commissions from links on this site. All strategies require independent research and risk assessment.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
