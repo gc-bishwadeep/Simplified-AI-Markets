@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Is Algo Trading? Complete Beginner's Guide for Indian Investors 2025–26 | Simplified AI Markets</title>
+<meta name="description" content="Algorithmic trading drives 50%+ of NSE volumes. Learn what algo trading is, how it works, the 5 strategy types, SEBI rules, and what you need to start — complete step-by-step guide for Indian investors.">
+<meta name="keywords" content="what is algo trading India, algorithmic trading NSE beginners, algo trading SEBI rules, zerodha streak algo, how to start algo trading India, NIFTY algo strategy">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://gc-bishwadeep.github.io/Simplified-AI-Markets/blog/algo-trading-beginner-guide.html">
+<meta property="og:title" content="What Is Algo Trading? Complete Beginner's Guide for Indian Investors">
+<meta property="og:description" content="50%+ of NSE trades are algorithmic. Here's what that means, how it works, and how to get started — step by step.">
+<meta property="og:type" content="article">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"What Is Algo Trading? The Complete Beginner's Guide for Indian Investors (2025–26)","description":"Algorithmic trading drives 50%+ of NSE volumes. Learn what algo trading is, how it works, the 5 strategy types, SEBI rules, and what you need to start.","author":{"@type":"Organization","name":"Simplified AI Markets"},"publisher":{"@type":"Organization","name":"Simplified AI Markets"},"datePublished":"2025-12-01","isPartOf":{"@type":"Series","name":"Algo Trading: Beginner to Pro","position":1}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do I need coding to do algo trading in India?","acceptedAnswer":{"@type":"Answer","text":"No. Platforms like Zerodha Streak and Tradetron allow no-code strategy building."}},{"@type":"Question","name":"How much money do I need to start algo trading?","acceptedAnswer":{"@type":"Answer","text":"₹25,000–₹50,000 is a reasonable starting amount for live trading. You can learn and backtest for free."}},{"@type":"Question","name":"Is algo trading legal in India?","acceptedAnswer":{"@type":"Answer","text":"Yes. SEBI first permitted algorithmic trading in April 2008. It is completely legal through SEBI-registered brokers."}}]}</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+:root{
+  --bg:#080b12;--bg2:#0d1117;--bg3:#131922;--bg4:#1a2236;
+  --border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.11);
+  --accent:#00d4aa;--accent2:#0ea5e9;--gold:#f59e0b;--red:#f43f5e;
+  --text:#e2e8f0;--text2:#94a3b8;--text3:#475569;
+  --ff-head:'Syne',system-ui,sans-serif;
+  --ff-body:'DM Sans',system-ui,sans-serif;
+  --ff-mono:'DM Mono',monospace;
+  --r:10px;--r2:18px;--mw:1180px;
+}
+body{background:var(--bg);color:var(--text);font-family:var(--ff-body);font-size:16px;line-height:1.7;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+.wrap{max-width:var(--mw);margin:0 auto;padding:0 24px}
+
+/* HEADER */
+.hdr{position:sticky;top:0;z-index:200;background:rgba(8,11,18,.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
+.hdr-inner{display:flex;align-items:center;justify-content:space-between;height:66px;gap:20px}
+.logo{display:flex;align-items:center;gap:11px;flex-shrink:0}
+.logo-mark{width:38px;height:38px;border-radius:9px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-family:var(--ff-head);font-size:12px;font-weight:800;color:#080b12;flex-shrink:0}
+.logo-txt{font-family:var(--ff-head);font-size:12px;color:var(--text2);line-height:1.3}
+.logo-txt strong{color:var(--text);font-weight:700;display:block}
+nav{display:flex;align-items:center;gap:2px}
+.nl{font-size:14px;font-weight:500;color:var(--text2);padding:7px 13px;border-radius:8px;transition:all .2s}
+.nl:hover,.nl.active{color:var(--text);background:var(--bg3)}
+.ncta{font-size:13px;font-weight:600;color:#080b12;background:var(--accent);padding:8px 16px;border-radius:8px;margin-left:6px;transition:all .2s;white-space:nowrap}
+.ncta:hover{background:#00ebbf;transform:translateY(-1px)}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.burger span{width:22px;height:2px;background:var(--text);border-radius:2px;display:block;transition:all .3s}
+@media(max-width:800px){nav{display:none;flex-direction:column;position:absolute;top:66px;left:0;right:0;background:rgba(8,11,18,.97);padding:14px 20px;border-bottom:1px solid var(--border);gap:4px}nav.open{display:flex}.burger{display:flex}}
+
+/* BLOG HERO */
+.blog-hero{background:var(--bg2);border-bottom:1px solid var(--border);padding:72px 0 52px}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text3);margin-bottom:22px;font-family:var(--ff-mono)}
+.breadcrumb a{color:var(--accent)}
+.series-pill{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:500;font-family:var(--ff-mono);color:var(--accent);background:rgba(0,212,170,.07);border:1px solid rgba(0,212,170,.18);padding:5px 14px;border-radius:100px;margin-bottom:20px;letter-spacing:.05em}
+.sp-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+h1.blog-h{font-family:var(--ff-head);font-size:clamp(26px,5vw,54px);font-weight:800;letter-spacing:-1.5px;line-height:1.1;color:var(--text);margin-bottom:16px}
+.blog-sub{font-size:18px;color:var(--text2);line-height:1.65;max-width:760px;margin-bottom:26px}
+.meta-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--text3);font-family:var(--ff-mono)}
+.meta-badge{color:var(--accent);background:rgba(0,212,170,.08);border:1px solid rgba(0,212,170,.15);padding:3px 10px;border-radius:100px;font-size:11px}
+
+/* LAYOUT */
+.blog-layout{display:grid;grid-template-columns:1fr 300px;gap:52px;padding:56px 0 96px;align-items:start}
+@media(max-width:900px){.blog-layout{grid-template-columns:1fr}}
+
+/* SIDEBAR */
+.sidebar{display:flex;flex-direction:column;gap:18px}
+.toc-box{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:22px;position:sticky;top:84px}
+.toc-head{font-size:11px;font-weight:600;font-family:var(--ff-mono);color:var(--text3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
+.toc-list{list-style:none;display:flex;flex-direction:column;gap:2px}
+.toc-list a{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:var(--text2);padding:6px 9px;border-radius:7px;transition:all .2s;line-height:1.4}
+.toc-list a:hover{color:var(--accent);background:var(--bg3)}
+.toc-n{font-family:var(--ff-mono);font-size:11px;color:var(--text3);flex-shrink:0;margin-top:1px}
+.sidebar-ad{background:var(--bg2);border:1px dashed var(--border2);border-radius:var(--r);padding:18px;font-size:11px;font-family:var(--ff-mono);color:var(--text3);text-align:center;line-height:1.6}
+.sidebar-nl{background:rgba(0,212,170,.05);border:1px solid rgba(0,212,170,.14);border-radius:var(--r2);padding:22px}
+.snl-h{font-family:var(--ff-head);font-size:15px;font-weight:700;color:var(--text);margin-bottom:7px}
+.snl-sub{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:14px}
+.snl-inp{width:100%;background:var(--bg2);border:1px solid var(--border2);border-radius:var(--r);padding:10px 13px;font-size:14px;font-family:var(--ff-body);color:var(--text);outline:none;margin-bottom:9px;transition:border-color .2s}
+.snl-inp:focus{border-color:var(--accent)}
+.snl-inp::placeholder{color:var(--text3)}
+.btn-p{display:inline-flex;align-items:center;font-family:var(--ff-head);font-weight:600;color:#080b12;background:var(--accent);border:none;cursor:pointer;border-radius:var(--r);transition:all .2s;text-decoration:none}
+.btn-p:hover{background:#00ebbf;transform:translateY(-1px)}
+.btn-sm{font-size:13px;padding:10px 16px;width:100%;justify-content:center}
+
+/* ARTICLE CONTENT */
+.article h2{font-family:var(--ff-head);font-size:26px;font-weight:800;color:var(--text);margin:44px 0 14px;letter-spacing:-.5px;padding-top:20px;border-top:1px solid var(--border);line-height:1.2}
+.article h2:first-child{margin-top:0;border-top:none;padding-top:0}
+.article h3{font-family:var(--ff-head);font-size:19px;font-weight:700;color:var(--text);margin:28px 0 10px;letter-spacing:-.3px}
+.article h4{font-size:16px;font-weight:600;color:var(--text);margin:20px 0 8px}
+.article p{font-size:16px;line-height:1.85;color:var(--text2);margin-bottom:16px}
+.article strong{color:var(--text);font-weight:600}
+.article ul,.article ol{margin:14px 0 16px 22px}
+.article li{font-size:16px;color:var(--text2);line-height:1.75;margin-bottom:7px;padding-left:6px}
+.article ul li::marker{color:var(--accent)}
+.article ol li::marker{color:var(--accent);font-family:var(--ff-mono);font-size:13px}
+
+/* CALLOUTS */
+.callout{border-left:3px solid var(--accent);background:rgba(0,212,170,.05);border-radius:0 var(--r) var(--r) 0;padding:16px 20px;margin:22px 0}
+.callout p{margin-bottom:0;color:rgba(226,232,240,.9)}
+.callout strong{color:var(--accent)}
+.callout-warn{border-left-color:var(--gold);background:rgba(245,158,11,.05)}
+.callout-warn strong{color:var(--gold)}
+
+/* STAT BOXES */
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin:22px 0}
+.stat-box{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:16px;text-align:center}
+.sv{font-family:var(--ff-head);font-size:26px;font-weight:800;color:var(--accent);line-height:1;margin-bottom:5px}
+.sl{font-size:12px;color:var(--text3);line-height:1.4}
+
+/* WORKFLOW */
+.workflow{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:22px 0}
+.wf-title{font-size:11px;font-weight:600;font-family:var(--ff-mono);color:var(--text3);letter-spacing:.1em;text-transform:uppercase;padding:14px 22px;border-bottom:1px solid var(--border)}
+.wf-step{display:flex;gap:14px;padding:16px 22px;border-bottom:1px solid var(--border);align-items:flex-start}
+.wf-step:last-child{border-bottom:none}
+.wf-n{width:30px;height:30px;border-radius:50%;background:rgba(0,212,170,.1);border:1px solid rgba(0,212,170,.2);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;font-family:var(--ff-mono);color:var(--accent);flex-shrink:0;margin-top:2px}
+.wf-head{font-size:14px;font-weight:600;color:var(--text);margin-bottom:3px}
+.wf-sub{font-size:13px;color:var(--text2);line-height:1.6}
+
+/* TABLES */
+.table-wrap{overflow-x:auto;margin:20px 0;border-radius:var(--r);border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{background:var(--bg2);font-weight:600;font-family:var(--ff-head);text-align:left;padding:11px 14px;border-bottom:1px solid var(--border2);color:var(--text);white-space:nowrap;font-size:13px}
+td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top;line-height:1.5}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(255,255,255,.02)}
+.td-yes{color:var(--accent);font-weight:600}
+.td-no{color:var(--red)}
+.td-mid{color:var(--gold)}
+
+/* IMG PLACEHOLDER */
+.img-ph{background:var(--bg2);border:1px solid var(--border2);border-radius:var(--r2);padding:18px 22px;margin:26px 0}
+.ip-lbl{font-size:10px;font-family:var(--ff-mono);color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
+.ip-src{font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px}
+.ip-inst{font-size:13px;color:var(--text2);line-height:1.6}
+.ip-link{color:var(--accent)}
+
+/* AD SLOTS */
+.ad-wrap{margin:28px 0;text-align:center}
+.ad-lbl{font-size:10px;font-family:var(--ff-mono);color:var(--text3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
+.ad-ph{background:var(--bg2);border:1px dashed var(--border2);border-radius:var(--r);padding:20px;font-size:12px;color:var(--text3);font-family:var(--ff-mono)}
+
+/* NEXT POST */
+.next-post{background:var(--bg2);border:1px solid var(--border2);border-radius:var(--r2);padding:26px 30px;margin:36px 0}
+.np-lbl{font-size:11px;font-family:var(--ff-mono);color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:9px}
+.np-title{font-family:var(--ff-head);font-size:19px;font-weight:700;color:var(--text);margin-bottom:7px}
+.np-sub{font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:14px}
+.btn-g{display:inline-flex;align-items:center;font-size:14px;font-weight:500;color:var(--text);background:transparent;border:1px solid var(--border2);padding:10px 20px;border-radius:var(--r);transition:all .2s;cursor:pointer}
+.btn-g:hover{border-color:var(--accent);color:var(--accent)}
+
+/* TAGS */
+.post-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px;padding-top:22px;border-top:1px solid var(--border)}
+.ptag{font-size:12px;font-family:var(--ff-mono);color:var(--text2);border:1px solid var(--border2);border-radius:100px;padding:4px 12px;transition:all .2s;cursor:default}
+.ptag:hover{color:var(--accent);border-color:var(--accent)}
+
+/* FAQ */
+.faq-item{border-bottom:1px solid var(--border);padding:16px 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-size:16px;font-weight:600;font-family:var(--ff-head);color:var(--text);margin-bottom:7px}
+.faq-a{font-size:15px;color:var(--text2);line-height:1.75}
+
+/* FOOTER */
+.ftr{background:var(--bg2);border-top:1px solid var(--border);padding-top:56px}
+.ftr-inner{display:grid;grid-template-columns:300px 1fr;gap:56px;padding-bottom:40px}
+@media(max-width:900px){.ftr-inner{grid-template-columns:1fr;gap:32px}}
+.ftr-tagline{font-size:14px;color:var(--text3);line-height:1.7;margin:12px 0 18px}
+.socials{display:flex;gap:9px}
+.soc{font-size:13px;font-weight:500;color:var(--text2);border:1px solid var(--border2);border-radius:8px;padding:6px 12px;transition:all .2s}
+.soc:hover{color:var(--accent);border-color:var(--accent)}
+.ftr-links{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:600px){.ftr-links{grid-template-columns:1fr 1fr}}
+.fl-col{display:flex;flex-direction:column;gap:8px}
+.fl-title{font-size:11px;font-weight:600;font-family:var(--ff-mono);color:var(--text3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px}
+.fl-col a{font-size:14px;color:var(--text2);transition:color .2s}
+.fl-col a:hover{color:var(--accent)}
+.ftr-bot{border-top:1px solid var(--border);padding:16px 0}
+.ftr-bot p{font-size:12px;color:var(--text3);text-align:center;line-height:1.7}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="hdr" id="hdr">
+  <div class="wrap hdr-inner">
+    <a href="../index.html" class="logo">
+      <div class="logo-mark">SAM</div>
+      <div class="logo-txt">Simplified AI<br><strong>Markets</strong></div>
+    </a>
+    <nav id="nav">
+      <a href="../index.html" class="nl">Home</a>
+      <a href="algo-trading-beginner-guide.html" class="nl active">Algo Trading</a>
+      <a href="../index.html#ai" class="nl">AI & Markets</a>
+      <a href="../index.html#tools" class="nl">Tools</a>
+      <a href="../index.html#about" class="nl">About</a>
+      <a href="../index.html#newsletter" class="ncta">Free Newsletter</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- BLOG HERO -->
+<section class="blog-hero">
+  <div class="wrap">
+    <nav class="breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="../index.html#series">Algo Trading Series</a><span>/</span><span>Blog 01</span></nav>
+    <div class="series-pill"><span class="sp-dot"></span>Series: Algo Trading — Blog 1 of 10</div>
+    <h1 class="blog-h">What Is Algo Trading? The Complete Beginner's Guide for Indian Investors (2025–26)</h1>
+    <p class="blog-sub">Algorithmic trading now drives over 50% of all NSE trades — yet most Indian retail investors have no idea how it works, whether it's legal, or how to get started. This guide covers everything: how algos work, the 5 strategy types, SEBI rules, tools, platforms, and exactly what you need to launch your first strategy.</p>
+    <div class="meta-row"><span class="meta-badge">Beginner</span><span>14 min read</span><span>NSE · BSE · SEBI · NIFTY</span><span>Updated December 2025</span></div>
+  </div>
+</section>
+
+<!-- COVER IMAGE PLACEHOLDER -->
+<div class="wrap" style="padding-top:28px">
+  <div class="img-ph">
+    <div class="ip-lbl">Cover image — upload here</div>
+    <div class="ip-src">Search: "stock market trading screens dark" on Unsplash.com</div>
+    <div class="ip-inst">Go to <a href="https://unsplash.com" class="ip-link" target="_blank">unsplash.com</a> → search "stock market trading screens dark" → pick a dramatic multi-screen image → download free → replace this block with an &lt;img&gt; tag.</div>
+  </div>
+</div>
+
+<!-- TOP AD -->
+<div class="wrap ad-wrap"><div class="ad-lbl">Advertisement</div><div class="ad-ph">Ad · 728×90 — Replace with your Google AdSense &lt;ins&gt; tag after approval</div></div>
+
+<!-- BLOG LAYOUT -->
+<div class="wrap">
+<div class="blog-layout">
+
+<!-- ARTICLE -->
+<main class="article" id="article">
+
+<h2 id="what-is">1 · What Is Algorithmic Trading?</h2>
+<p>Algorithmic trading — also called <strong>algo trading</strong>, automated trading, or systematic trading — means using a computer program to automatically buy and sell financial instruments based on a predefined set of rules.</p>
+<p>Instead of a human sitting at a screen, watching charts, and clicking "buy" or "sell," an algorithm does it. The rules can be simple — "buy NIFTY 50 ETF when the 20-day moving average crosses above the 50-day moving average" — or extraordinarily complex, involving machine learning models that process thousands of data points per second.</p>
+<p>The key word is <strong>predefined</strong>. Every decision the algorithm makes was programmed in advance. The algorithm does not guess. It does not feel fear or greed. It executes exactly the logic it was given, at a speed no human can match.</p>
+<div class="callout"><p><strong>Simple definition:</strong> Algo trading = a set of rules + a computer that executes those rules automatically, faster and more consistently than any human ever could.</p></div>
+
+<h3>A real-world example anyone can understand</h3>
+<p>Imagine you believe that whenever RELIANCE stock drops more than 3% in a single day on high volume, it tends to bounce back within 3 days. Manually, you'd need to watch the stock every day, remember your rule, and place the trade at the right moment — without panicking.</p>
+<p>With an algorithm, you write this rule once. The program monitors RELIANCE automatically, every minute of every trading day. The moment the condition triggers — 3% drop, high volume — it places the buy order instantly. Three days later, it sells. Every time. Without fail. That is algo trading at its most basic level.</p>
+
+<div class="img-ph">
+  <div class="ip-lbl">Inline image 1</div>
+  <div class="ip-src">Search: "computer code finance dark" on Pexels.com</div>
+  <div class="ip-inst">Caption: <em>"Algorithms execute buy/sell decisions in milliseconds — no emotions, no hesitation."</em></div>
+</div>
+
+<h2 id="how-big">2 · How Big Is Algo Trading in India Right Now?</h2>
+<p>Most Indian investors are completely unaware of how dominant algorithmic trading has already become in their own market. The numbers are striking.</p>
+<div class="stat-row">
+  <div class="stat-box"><div class="sv">50%+</div><div class="sl">NSE trade volume from algorithms</div></div>
+  <div class="stat-box"><div class="sv">2008</div><div class="sl">Year SEBI first allowed algo trading</div></div>
+  <div class="stat-box"><div class="sv">&lt;1ms</div><div class="sl">Speed of one algo trade</div></div>
+  <div class="stat-box"><div class="sv">₹12L Cr</div><div class="sl">NSE daily turnover (cash + F&O)</div></div>
+</div>
+<p>According to SEBI data, algorithmic orders now account for more than 50% of the total order flow on the NSE. On certain high-volume days in Nifty and Bank Nifty options, this percentage is even higher. When you place a trade today, there is a better than 50% chance the other side of your trade is a machine.</p>
+<div class="callout callout-warn"><p><strong>Why this matters for you:</strong> If you are trading manually — using gut feel, tips, or basic chart reading — you are competing directly against algorithms that react in microseconds, never panic, and never make emotional decisions. Understanding how they work is no longer optional. It is essential.</p></div>
+
+<h3>India vs the world — algo trading market share</h3>
+<div class="table-wrap"><table>
+  <thead><tr><th>Market</th><th>Algo trading share</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>USA (NYSE/NASDAQ)</td><td>70–80%</td><td>HFT firms dominate; most volume algorithmic</td></tr>
+    <tr><td>Europe (LSE, Euronext)</td><td>60–70%</td><td>MiFID II regulations shaped the landscape</td></tr>
+    <tr><td><strong>India (NSE/BSE)</strong></td><td><strong style="color:var(--accent)">50–60%</strong></td><td>Growing rapidly since SEBI allowed it in 2008</td></tr>
+    <tr><td>Japan (TSE)</td><td>60–70%</td><td>Dominated by institutional algos</td></tr>
+    <tr><td>China (SSE)</td><td>25–35%</td><td>Lower due to regulatory restrictions</td></tr>
+  </tbody>
+</table></div>
+
+<h2 id="how-works">3 · How Does an Algo Actually Work?</h2>
+<p>Every algo trading system — from the simplest retail strategy to the most complex institutional system — follows this same 7-step workflow.</p>
+<div class="workflow">
+  <div class="wf-title">The Algo Trading Workflow — Step by Step</div>
+  <div class="wf-step"><div class="wf-n">1</div><div><div class="wf-head">Data ingestion</div><div class="wf-sub">The algorithm receives live market data — price, volume, order book depth, news feeds, economic data. Institutional algos receive data in microseconds via co-location servers at the exchange.</div></div></div>
+  <div class="wf-step"><div class="wf-n">2</div><div><div class="wf-head">Signal generation</div><div class="wf-sub">The algo processes data and checks for defined conditions. "Has the RSI crossed below 30 AND is the price above the 200-day moving average?" If yes, a buy signal is generated.</div></div></div>
+  <div class="wf-step"><div class="wf-n">3</div><div><div class="wf-head">Risk check</div><div class="wf-sub">Before placing any order, the system checks: maximum position size, daily loss limit, existing positions, available margin. If any risk limit would be breached, the order is blocked.</div></div></div>
+  <div class="wf-step"><div class="wf-n">4</div><div><div class="wf-head">Order generation</div><div class="wf-sub">The algo creates a specific order: instrument (NIFTY50), order type (market/limit/SL), quantity, price, validity. It chooses the order type based on its execution strategy.</div></div></div>
+  <div class="wf-step"><div class="wf-n">5</div><div><div class="wf-head">Order routing & execution</div><div class="wf-sub">The order is sent through a broker's API to NSE/BSE. For retail algos: Zerodha Kite Connect, Upstox API, Angel SmartAPI. For institutional: DMA (Direct Market Access) for sub-millisecond execution.</div></div></div>
+  <div class="wf-step"><div class="wf-n">6</div><div><div class="wf-head">Position monitoring</div><div class="wf-sub">After the trade is live, the algo monitors the position against exit conditions: target profit, stop loss, trailing stop, or time-based exit.</div></div></div>
+  <div class="wf-step"><div class="wf-n">7</div><div><div class="wf-head">Exit & logging</div><div class="wf-sub">When exit conditions are met, the algo closes the position. Every trade — entry, exit, P&L, execution time — is logged. This data feeds back into strategy improvement.</div></div></div>
+</div>
+
+<!-- MID-ARTICLE AD -->
+<div class="ad-wrap"><div class="ad-lbl">Advertisement</div><div class="ad-ph">Ad · 336×280 — Google AdSense Rectangle</div></div>
+
+<h2 id="strategy-types">4 · The 5 Main Types of Algo Trading Strategies</h2>
+
+<h3>Strategy 1: Trend Following</h3>
+<p><strong>What it does:</strong> Identifies when a stock is moving consistently in one direction and rides that trend until it reverses.</p>
+<p><strong>Indian market example:</strong> Moving average crossover on NIFTY 50 futures — go long when the 20-day MA crosses above the 50-day MA, exit when it crosses back below.</p>
+<p><strong>Works best in:</strong> Trending markets. Struggles in sideways, choppy conditions. <strong>Difficulty: Beginner.</strong></p>
+
+<h3>Strategy 2: Mean Reversion</h3>
+<p><strong>What it does:</strong> Bets that prices which have moved too far from their average will snap back. "What goes too high will come down."</p>
+<p><strong>Indian market example:</strong> When HDFC Bank's RSI drops below 25 (oversold) and the stock trades 2 standard deviations below its 20-day average — buy. Sell when RSI returns above 50.</p>
+<p><strong>Works best in:</strong> Range-bound markets. Dangerous in strong trending markets. <strong>Difficulty: Beginner–Intermediate.</strong></p>
+
+<h3>Strategy 3: Arbitrage</h3>
+<p><strong>What it does:</strong> Exploits price differences for the same asset across different markets. Buy cheap in one place, sell expensive in another — risk-free profit in theory.</p>
+<p><strong>Reality check:</strong> Pure arbitrage opportunities in Indian markets last milliseconds. By the time a retail algo spots them, institutional HFT firms have already closed the gap. <strong>Difficulty: Expert.</strong></p>
+
+<h3>Strategy 4: Market Making</h3>
+<p><strong>What it does:</strong> Simultaneously places buy orders below and sell orders above the current price, profiting from the bid-ask spread — repeated thousands of times daily. In India, primarily done by SEBI-registered Market Makers. <strong>Difficulty: Expert.</strong></p>
+
+<h3>Strategy 5: Statistical Arbitrage</h3>
+<p><strong>What it does:</strong> Uses statistical relationships between multiple securities to find temporary mispricings.</p>
+<p><strong>Indian market example:</strong> Pairs trading HDFCBANK and ICICIBANK — when the price ratio diverges beyond 2 standard deviations, go long the underperformer and short the outperformer. <strong>Difficulty: Advanced.</strong></p>
+
+<div class="table-wrap"><table>
+  <thead><tr><th>Strategy</th><th>Difficulty</th><th>Best market</th><th>Holding period</th><th>Capital needed</th></tr></thead>
+  <tbody>
+    <tr><td>Trend following</td><td class="td-yes">Beginner</td><td>Trending</td><td>Days–weeks</td><td>₹50K+</td></tr>
+    <tr><td>Mean reversion</td><td class="td-yes">Beginner–Mid</td><td>Range-bound</td><td>Hours–days</td><td>₹1L+</td></tr>
+    <tr><td>Arbitrage</td><td class="td-no">Expert</td><td>Any</td><td>Milliseconds</td><td>₹1Cr+</td></tr>
+    <tr><td>Market making</td><td class="td-no">Expert</td><td>Any</td><td>Milliseconds</td><td>₹5Cr+</td></tr>
+    <tr><td>Statistical arb</td><td class="td-mid">Advanced</td><td>Any</td><td>Days–weeks</td><td>₹5L+</td></tr>
+  </tbody>
+</table></div>
+
+<h2 id="who-uses">5 · Who Uses Algo Trading in India?</h2>
+<h3>Group 1: Institutional players</h3>
+<p>Mutual funds, insurance companies, FIIs, and hedge funds. Their goal is executing massive orders — sometimes ₹500 crore or more — without moving the market price against themselves. They use VWAP and TWAP execution algorithms to spread orders across the trading day.</p>
+<h3>Group 2: Proprietary trading firms</h3>
+<p>Firms trading with their own capital using AI and machine learning — HFT, statistical arbitrage, and market making. Firms like Optiver and Jane Street have co-located servers inside NSE/BSE data centers.</p>
+<h3>Group 3: Retail algo traders</h3>
+<p>Individual investors using platforms like Zerodha Streak, Tradetron, AlgoTest, and Pi Bridge — building and deploying strategies without writing a single line of code. This is the most relevant category for readers of this guide.</p>
+
+<div class="img-ph">
+  <div class="ip-lbl">Inline image 2</div>
+  <div class="ip-src">Search: "person laptop trading finance" on Pexels.com</div>
+  <div class="ip-inst">Caption: <em>"Retail algo trading in India has become accessible to anyone with a brokerage account and a laptop."</em></div>
+</div>
+
+<h2 id="legal">6 · Is Algo Trading Legal in India? SEBI Rules Explained</h2>
+<p><strong>Yes — algo trading is completely legal in India.</strong> SEBI first permitted it in April 2008. But there are important rules every retail trader must know.</p>
+
+<div class="table-wrap"><table>
+  <thead><tr><th>Year</th><th>SEBI action</th><th>Impact</th></tr></thead>
+  <tbody>
+    <tr><td>2008</td><td>First DMA and algo trading circular</td><td>Institutional algo trading officially permitted</td></tr>
+    <tr><td>2012</td><td>Co-location facility guidelines</td><td>Regulated co-location at NSE/BSE for HFT firms</td></tr>
+    <tr><td>2013</td><td>Algo audit requirements</td><td>Brokers must audit all algos before deployment</td></tr>
+    <tr><td>2022</td><td>API framework for retail algo trading</td><td>Brokers must register retail algo products with SEBI</td></tr>
+    <tr><td>2024</td><td>Regulations tightened</td><td>Stricter compliance for third-party algo platforms</td></tr>
+  </tbody>
+</table></div>
+
+<p><strong>Rule 1: Every algo must be broker-approved.</strong> Your algorithm must go through a SEBI-registered broker. You cannot connect directly to NSE.</p>
+<p><strong>Rule 2: Only use regulated third-party platforms.</strong> Platforms like Tradetron and Streak must operate within the broker's regulatory framework.</p>
+<p><strong>Rule 3: All SEBI limits apply.</strong> Position limits, margin requirements, and order-to-trade ratio (OTR) limits apply to algo orders exactly like manual orders.</p>
+<p><strong>Rule 4: No guaranteed returns — ever.</strong> Any service guaranteeing returns from an algo is illegal under SEBI rules.</p>
+<div class="callout"><p><strong>Bottom line:</strong> Use an algo through Zerodha Kite Connect, Upstox API, or Angel One SmartAPI — you are operating legally. Use an unregistered platform promising guaranteed returns — you are taking legal and financial risk.</p></div>
+
+<!-- SECOND MID-ARTICLE AD -->
+<div class="ad-wrap"><div class="ad-lbl">Advertisement</div><div class="ad-ph">Ad · 336×280 — Google AdSense Rectangle</div></div>
+
+<h2 id="comparison">7 · Algo Trading vs Manual Trading</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>Factor</th><th>Manual trading</th><th>Algo trading</th><th>Winner</th></tr></thead>
+  <tbody>
+    <tr><td>Execution speed</td><td>Seconds to minutes</td><td>Milliseconds</td><td class="td-yes">Algo</td></tr>
+    <tr><td>Emotional discipline</td><td>Affected by fear/greed</td><td>Zero emotions</td><td class="td-yes">Algo</td></tr>
+    <tr><td>Consistency</td><td>Inconsistent rule application</td><td>Perfect every time</td><td class="td-yes">Algo</td></tr>
+    <tr><td>Backtesting ability</td><td>Very limited</td><td>Full historical testing</td><td class="td-yes">Algo</td></tr>
+    <tr><td>Multiple strategies</td><td>1–2 maximum</td><td>Unlimited simultaneously</td><td class="td-yes">Algo</td></tr>
+    <tr><td>Setup complexity</td><td>Minimal</td><td>Requires learning</td><td class="td-yes">Manual</td></tr>
+    <tr><td>Adaptability to news</td><td>Instant human judgment</td><td>Requires programming</td><td class="td-yes">Manual</td></tr>
+    <tr><td>Initial cost</td><td>Just a Demat account</td><td>Platform fees + API costs</td><td class="td-yes">Manual</td></tr>
+    <tr><td>Monitoring required</td><td>Constant attention</td><td>Periodic oversight</td><td class="td-yes">Algo</td></tr>
+    <tr><td>Scalability</td><td>Limited by human capacity</td><td>Scales to any size</td><td class="td-yes">Algo</td></tr>
+  </tbody>
+</table></div>
+<div class="callout callout-warn"><p><strong>Reality check:</strong> Most retail algo traders lose money in their first year — not because algos don't work, but because they skip backtesting, ignore risk management, or over-optimize. This 10-part series teaches you how to avoid every single one of these mistakes.</p></div>
+
+<h2 id="getting-started">8 · What Do You Actually Need to Get Started?</h2>
+<div class="workflow">
+  <div class="wf-title">What you need — in order of priority</div>
+  <div class="wf-step"><div class="wf-n">A</div><div><div class="wf-head">A Demat + trading account with API access</div><div class="wf-sub">Free options: Upstox (free API), Angel One SmartAPI, Shoonya by Finvasia. Paid: Zerodha Kite Connect (₹2,000/month) — most popular, best documentation.</div></div></div>
+  <div class="wf-step"><div class="wf-n">B</div><div><div class="wf-head">A strategy written in plain language first</div><div class="wf-sub">Write your rules in simple if/then sentences before touching any platform. "If X happens, buy Y. If Z happens, sell." If you can't write it plainly, you can't program it.</div></div></div>
+  <div class="wf-step"><div class="wf-n">C</div><div><div class="wf-head">A platform to build and test your algo</div><div class="wf-sub">No-code: Zerodha Streak, Tradetron, AlgoTest. With Python: Backtrader + broker API. Blog #5 covers all platforms with a full comparison.</div></div></div>
+  <div class="wf-step"><div class="wf-n">D</div><div><div class="wf-head">Historical data for backtesting</div><div class="wf-sub">Free: NSE website (daily data), Yahoo Finance, Zerodha historical data API. Paid: True Data, Global Data Feed (₹500–₹2,000/month for tick data).</div></div></div>
+  <div class="wf-step"><div class="wf-n">E</div><div><div class="wf-head">Risk management rules — before going live</div><div class="wf-sub">Maximum daily loss limit. Maximum position size per trade. Maximum open positions simultaneously. Non-negotiable. Every professional algo trader has hard risk limits set before deployment.</div></div></div>
+  <div class="wf-step"><div class="wf-n">F</div><div><div class="wf-head">Capital — start small, scale after proof</div><div class="wf-sub">NIFTY options strategies: ₹10,000–₹50,000. Equity delivery: ₹25,000–₹1,00,000. Golden rule: never deploy more than you can afford to lose entirely while still learning.</div></div></div>
+</div>
+
+<div class="table-wrap"><table>
+  <thead><tr><th>What you need</th><th>Free option</th><th>Paid option</th><th>Paid cost</th></tr></thead>
+  <tbody>
+    <tr><td>Broker API</td><td>Upstox, Angel One SmartAPI</td><td>Zerodha Kite Connect</td><td>₹2,000/month</td></tr>
+    <tr><td>No-code platform</td><td>Zerodha Streak (basic)</td><td>Tradetron Pro</td><td>₹999–₹2,999/month</td></tr>
+    <tr><td>Backtesting</td><td>AlgoTest (free tier)</td><td>AlgoTest Pro, Amibroker</td><td>₹999–₹5,000/month</td></tr>
+    <tr><td>Historical data</td><td>NSE website, Yahoo Finance</td><td>True Data, Global Data Feed</td><td>₹500–₹2,000/month</td></tr>
+    <tr><td>Starting capital</td><td colspan="3">₹25,000 minimum recommended for meaningful live testing</td></tr>
+  </tbody>
+</table></div>
+
+<h2 id="mistakes">9 · 8 Beginner Mistakes to Avoid</h2>
+<h3>Mistake 1: Skipping backtesting</h3>
+<p>"It makes logical sense" is not enough. Markets are not logical. Test your strategy on data first before risking real capital. Full backtesting guide in Blog #4.</p>
+<h3>Mistake 2: Over-optimizing (curve fitting)</h3>
+<p>Tweaking your strategy until it looks perfect on historical data — then failing in live trading. A 95% win rate on 2020–2024 data tuned specifically to that period will fail in 2025. Solution: out-of-sample testing and walk-forward analysis.</p>
+<h3>Mistake 3: No risk management</h3>
+<p>Running an algo without hard stop-loss and daily loss limits is like driving at 200 km/h with no brakes. Every single algo must have a per-trade stop loss, a maximum daily loss limit, and a maximum drawdown limit.</p>
+<h3>Mistake 4: Not paper trading first</h3>
+<p>Always run your algo with fake money in live market conditions before risking real capital. Reveals API delays, logic errors, and slippage you'd never see in backtesting.</p>
+<h3>Mistake 5: Too much capital too soon</h3>
+<p>Start with the minimum capital needed to trade one unit. Scale up only after 3–6 months of live results matching your backtest.</p>
+<h3>Mistake 6: Ignoring transaction costs</h3>
+<p>Brokerage, STT, exchange fees, GST, SEBI charges — these add up to 0.05–0.1% per trade. An algo trading 10 times daily faces 0.5–1% in daily costs. Always include realistic costs in your backtests.</p>
+<h3>Mistake 7: Not monitoring your live algo</h3>
+<p>Algos need oversight for technical failures (API disconnections, exchange outages), strategy degradation, and risk limit breaches. Have a kill switch ready.</p>
+<h3>Mistake 8: Using "guaranteed return" algo services</h3>
+<p>Any service guaranteeing monthly returns from algo trading is either a scam or dangerously over-leveraged. SEBI has taken action against multiple such services. Stay away.</p>
+
+<h2 id="faq">10 · Frequently Asked Questions</h2>
+<div class="faq-item"><div class="faq-q">Do I need to know coding to do algo trading in India?</div><div class="faq-a">No. Platforms like Zerodha Streak and Tradetron allow no-code strategy building using drag-and-drop. Learning Python gives you significantly more power, but is not required to start. Blogs #3 and #5 in this series cover both paths.</div></div>
+<div class="faq-item"><div class="faq-q">How much money do I need to start algo trading in India?</div><div class="faq-a">You can learn and backtest with zero capital using free platforms. For live trading, ₹25,000–₹50,000 is a reasonable starting amount. Start small and scale only after proving your strategy works in live markets over at least 3 months.</div></div>
+<div class="faq-item"><div class="faq-q">Can algo trading make me rich?</div><div class="faq-a">It can be very profitable for systematic traders who backtest rigorously and manage risk carefully. It is not passive income or a get-rich-quick path. The learning curve takes 6–18 months before most traders find a consistently profitable strategy.</div></div>
+<div class="faq-item"><div class="faq-q">What is the difference between algo trading and HFT?</div><div class="faq-a">All HFT is algo trading, but not all algo trading is HFT. HFT executes thousands of trades per second using co-located servers for microsecond advantages. Retail traders can do regular algo trading — HFT requires institutional infrastructure worth crores.</div></div>
+<div class="faq-item"><div class="faq-q">Which broker is best for algo trading beginners in India?</div><div class="faq-a">Zerodha (most popular, best documentation, Streak platform included), Upstox (free API, growing community), and Angel One (free SmartAPI). All three are SEBI-registered and reliable. Blog #5 covers all platforms with a full comparison table.</div></div>
+<div class="faq-item"><div class="faq-q">NIFTY or Bank NIFTY for beginners?</div><div class="faq-a">Start with NIFTY 50. Lower volatility, more predictable price action. Bank NIFTY has bigger intraday moves but carries significantly more risk for beginners. Instrument selection is covered in depth in Blog #3.</div></div>
+
+<!-- NEXT POST -->
+<div class="next-post">
+  <div class="np-lbl">Read next in this series →</div>
+  <div class="np-title">Blog #2: How Algo Trading Actually Works — Order Types, Execution & Market Mechanics</div>
+  <div class="np-sub">Now that you understand what algo trading is, the next post dives into how trades are actually executed: market orders vs limit orders, the role of the order book, how your broker API connects to NSE, what slippage costs you, and a step-by-step walkthrough of placing your first algorithmic order.</div>
+  <a href="../index.html#newsletter" class="btn-g">Subscribe to get notified when Blog #2 publishes →</a>
+</div>
+
+<!-- TAGS -->
+<div class="post-tags">
+  <span class="ptag">Algo Trading</span><span class="ptag">NSE</span><span class="ptag">BSE</span><span class="ptag">SEBI</span><span class="ptag">NIFTY</span><span class="ptag">Zerodha</span><span class="ptag">Beginner</span><span class="ptag">Indian Stock Market</span><span class="ptag">Automated Trading</span><span class="ptag">Mean Reversion</span><span class="ptag">Trend Following</span><span class="ptag">Backtrader</span><span class="ptag">Zerodha Streak</span>
+</div>
+
+</main>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="toc-box">
+    <div class="toc-head">📋 Table of Contents</div>
+    <ol class="toc-list">
+      <li><a href="#what-is"><span class="toc-n">1</span>What is algorithmic trading?</a></li>
+      <li><a href="#how-big"><span class="toc-n">2</span>How big is algo trading in India?</a></li>
+      <li><a href="#how-works"><span class="toc-n">3</span>How does an algo work?</a></li>
+      <li><a href="#strategy-types"><span class="toc-n">4</span>The 5 main strategy types</a></li>
+      <li><a href="#who-uses"><span class="toc-n">5</span>Who uses algo trading?</a></li>
+      <li><a href="#legal"><span class="toc-n">6</span>Is it legal? SEBI rules</a></li>
+      <li><a href="#comparison"><span class="toc-n">7</span>Algo vs manual trading</a></li>
+      <li><a href="#getting-started"><span class="toc-n">8</span>What do you need to start?</a></li>
+      <li><a href="#mistakes"><span class="toc-n">9</span>Beginner mistakes to avoid</a></li>
+      <li><a href="#faq"><span class="toc-n">10</span>FAQ</a></li>
+    </ol>
+  </div>
+  <div class="sidebar-ad"><div class="ad-lbl" style="margin-bottom:6px">Advertisement</div>Ad · 300×250<br>Google AdSense Rectangle<br><small>Replace with your &lt;ins&gt; tag</small></div>
+  <div class="sidebar-nl">
+    <div class="snl-h">Get the full series free</div>
+    <div class="snl-sub">All 10 algo trading guides delivered weekly to your inbox — plus AI market insights every week.</div>
+    <form onsubmit="event.preventDefault();this.querySelector('button').textContent='Subscribed! ✓';this.querySelector('button').style.background='#059669'">
+      <input type="email" class="snl-inp" placeholder="your@email.com" required>
+      <button type="submit" class="btn-p btn-sm">Subscribe Free →</button>
+    </form>
+  </div>
+  <div class="sidebar-ad"><div class="ad-lbl" style="margin-bottom:6px">Advertisement</div>Ad · 300×250<br>Google AdSense Rectangle</div>
+</aside>
+
+</div><!-- blog-layout -->
+</div><!-- wrap -->
+
+<!-- BOTTOM AD -->
+<div class="wrap ad-wrap"><div class="ad-lbl">Advertisement</div><div class="ad-ph">Ad · 728×90 — Google AdSense Leaderboard</div></div>
+
+<!-- FOOTER -->
+<footer class="ftr">
+  <div class="wrap ftr-inner">
+    <div>
+      <a href="../index.html" class="logo"><div class="logo-mark">SAM</div><div class="logo-txt">Simplified AI<br><strong>Markets</strong></div></a>
+      <p class="ftr-tagline">Algorithmic trading and AI investing education for Indian retail investors. NSE · BSE · NIFTY.</p>
+      <div class="socials">
+        <a href="https://www.instagram.com/simplified_markets" target="_blank" rel="noopener" class="soc">Instagram</a>
+        <a href="https://www.youtube.com/@SimplifiedAIedu" target="_blank" rel="noopener" class="soc">YouTube</a>
+        <a href="https://www.linkedin.com/in/bishwadeepgc" target="_blank" rel="noopener" class="soc">LinkedIn</a>
+      </div>
+    </div>
+    <div class="ftr-links">
+      <div class="fl-col"><div class="fl-title">Algo Series</div><a href="algo-trading-beginner-guide.html">Blog 1: What Is Algo Trading?</a><a href="#">Blog 2: Order Types & Execution</a><a href="#">Blog 3: Your First Strategy</a><a href="#">Blog 4: Backtesting Guide</a></div>
+      <div class="fl-col"><div class="fl-title">Site</div><a href="../index.html">Home</a><a href="../index.html#tools">Free Tools</a><a href="../index.html#newsletter">Newsletter</a><a href="../index.html#about">About</a></div>
+      <div class="fl-col"><div class="fl-title">Legal</div><a href="#">Privacy Policy</a><a href="#">Disclaimer</a><a href="#">Advertise Here</a></div>
+    </div>
+  </div>
+  <div class="ftr-bot"><div class="wrap"><p>© 2025–26 Simplified AI Markets. For educational purposes only. Not investment advice. We may earn affiliate commissions from links on this site.</p></div></div>
+</footer>
+
+<script>
+// Mobile nav
+const burger=document.getElementById('burger'),nav=document.getElementById('nav');
+burger.addEventListener('click',()=>nav.classList.toggle('open'));
+// Header shadow
+window.addEventListener('scroll',()=>{document.getElementById('hdr').style.boxShadow=window.scrollY>20?'0 4px 32px rgba(0,0,0,.5)':'none'});
+// Active TOC highlight
+const tocLinks=document.querySelectorAll('.toc-list a');
+const sections=document.querySelectorAll('.article h2');
+if(tocLinks.length&&sections.length){
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const id=e.target.getAttribute('id');
+        tocLinks.forEach(l=>{l.style.color='';if(l.getAttribute('href')==='#'+id)l.style.color='var(--accent)'});
+      }
+    });
+  },{rootMargin:'-15% 0px -75% 0px'});
+  sections.forEach(s=>io.observe(s));
+}
+</script>
+</body>
+</html>

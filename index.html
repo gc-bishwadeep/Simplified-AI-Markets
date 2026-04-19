@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simplified AI Markets — Algo Trading & AI Investing for Indian Investors</title>
+<meta name="description" content="Learn algorithmic trading and AI-powered investing for Indian stock markets (NSE, BSE, NIFTY). Step-by-step guides from beginner to pro.">
+<meta name="keywords" content="algo trading India, algorithmic trading NSE, AI trading India, NIFTY algo strategy, BSE automated trading, zerodha algo, quantitative trading India">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://gc-bishwadeep.github.io/Simplified-AI-Markets/">
+<meta property="og:title" content="Simplified AI Markets — Algo Trading & AI Investing">
+<meta property="og:description" content="Step-by-step algo trading and AI investing guides for Indian stock market investors.">
+<meta property="og:type" content="website">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Simplified AI Markets","url":"https://gc-bishwadeep.github.io/Simplified-AI-Markets/","description":"Algorithmic trading and AI investing guides for Indian stock market investors"}</script>
+
+<!-- D3.js -->
+<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap');
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+
+:root{
+  --bg:#080b12;
+  --bg2:#0d1117;
+  --bg3:#131922;
+  --bg4:#1a2236;
+  --border:rgba(255,255,255,0.06);
+  --border2:rgba(255,255,255,0.11);
+  --accent:#00d4aa;
+  --accent2:#0ea5e9;
+  --gold:#f59e0b;
+  --red:#f43f5e;
+  --text:#e2e8f0;
+  --text2:#94a3b8;
+  --text3:#475569;
+  --glow:rgba(0,212,170,0.12);
+  --ff-head:'Syne',system-ui,sans-serif;
+  --ff-body:'DM Sans',system-ui,sans-serif;
+  --ff-mono:'DM Mono',monospace;
+  --r:10px;
+  --r2:18px;
+  --mw:1180px;
+}
+
+body{background:var(--bg);color:var(--text);font-family:var(--ff-body);font-size:16px;line-height:1.7;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+
+/* ── LAYOUT ── */
+.wrap{max-width:var(--mw);margin:0 auto;padding:0 24px}
+
+/* ── HEADER ── */
+.hdr{
+  position:sticky;top:0;z-index:200;
+  background:rgba(8,11,18,0.88);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  transition:box-shadow .3s;
+}
+.hdr-inner{display:flex;align-items:center;justify-content:space-between;height:66px;gap:20px}
+.logo{display:flex;align-items:center;gap:11px;flex-shrink:0}
+.logo-mark{
+  width:38px;height:38px;border-radius:9px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--ff-head);font-size:12px;font-weight:800;color:#080b12;letter-spacing:-.3px;flex-shrink:0;
+}
+.logo-txt{font-family:var(--ff-head);font-size:12px;color:var(--text2);line-height:1.3}
+.logo-txt strong{color:var(--text);font-weight:700;display:block}
+nav{display:flex;align-items:center;gap:2px}
+.nl{font-size:14px;font-weight:500;color:var(--text2);padding:7px 13px;border-radius:8px;transition:all .2s}
+.nl:hover,.nl.active{color:var(--text);background:var(--bg3)}
+.ncta{
+  font-size:13px;font-weight:600;color:#080b12;
+  background:var(--accent);padding:8px 16px;border-radius:8px;margin-left:6px;
+  transition:all .2s;white-space:nowrap;
+}
+.ncta:hover{background:#00ebbf;transform:translateY(-1px);box-shadow:0 6px 24px rgba(0,212,170,.3)}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.burger span{width:22px;height:2px;background:var(--text);border-radius:2px;display:block;transition:all .3s}
+@media(max-width:800px){
+  nav{display:none;flex-direction:column;position:absolute;top:66px;left:0;right:0;background:rgba(8,11,18,.97);padding:14px 20px;border-bottom:1px solid var(--border);gap:4px}
+  nav.open{display:flex}
+  .burger{display:flex}
+}
+
+/* ── HERO ── */
+.hero{position:relative;min-height:94vh;display:flex;align-items:center;overflow:hidden;padding:80px 0}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.grid{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(0,212,170,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,170,.035) 1px,transparent 1px);
+  background-size:56px 56px;
+  mask-image:radial-gradient(ellipse 85% 85% at 50% 50%,black 30%,transparent 100%);
+}
+.orb{position:absolute;border-radius:50%;filter:blur(110px);opacity:.22}
+.o1{width:560px;height:560px;background:var(--accent);top:-160px;right:-80px;animation:float 9s ease-in-out infinite}
+.o2{width:380px;height:380px;background:var(--accent2);bottom:-100px;left:-80px;animation:float 11s ease-in-out infinite reverse}
+.o3{width:260px;height:260px;background:var(--gold);top:40%;left:30%;opacity:.1;animation:float 14s ease-in-out infinite 3s}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(25px,-25px) scale(1.04)}}
+
+.hero-inner{position:relative;z-index:1;max-width:840px;animation:fadeup .9s ease both}
+@keyframes fadeup{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+.pill{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;font-weight:500;font-family:var(--ff-mono);color:var(--accent);
+  background:rgba(0,212,170,.07);border:1px solid rgba(0,212,170,.18);
+  padding:5px 14px;border-radius:100px;margin-bottom:28px;letter-spacing:.05em;
+}
+.dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s ease infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+
+h1.hero-h{
+  font-family:var(--ff-head);
+  font-size:clamp(34px,6vw,72px);
+  font-weight:800;line-height:1.07;letter-spacing:-2px;
+  color:var(--text);margin-bottom:22px;
+}
+h1.hero-h em{
+  font-style:normal;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-sub{font-size:18px;color:var(--text2);max-width:640px;line-height:1.72;margin-bottom:36px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:52px}
+
+.btn-p{
+  display:inline-flex;align-items:center;font-size:15px;font-weight:600;
+  font-family:var(--ff-head);color:#080b12;background:var(--accent);
+  padding:13px 26px;border-radius:var(--r);border:none;cursor:pointer;transition:all .2s;text-decoration:none;
+}
+.btn-p:hover{background:#00ebbf;transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,212,170,.32)}
+.btn-g{
+  display:inline-flex;align-items:center;font-size:15px;font-weight:500;
+  color:var(--text);background:transparent;border:1px solid var(--border2);
+  padding:13px 26px;border-radius:var(--r);transition:all .2s;cursor:pointer;text-decoration:none;
+}
+.btn-g:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+
+.hero-stats{display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+.hs{display:flex;flex-direction:column}
+.hs-n{font-family:var(--ff-head);font-size:28px;font-weight:800;color:var(--text);line-height:1}
+.hs-l{font-size:12px;color:var(--text3);margin-top:3px}
+.hs-div{width:1px;height:38px;background:var(--border2)}
+
+/* ── D3 TICKER ── */
+.ticker-wrap{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:14px 0;overflow:hidden}
+#ticker{display:flex;gap:0;white-space:nowrap;animation:tick 28s linear infinite}
+#ticker:hover{animation-play-state:paused}
+@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.tick-item{display:inline-flex;align-items:center;gap:10px;padding:0 28px;font-family:var(--ff-mono);font-size:13px}
+.tick-sym{font-weight:500;color:var(--text)}
+.tick-val{color:var(--text2)}
+.tick-up{color:#22c55e;font-size:12px}
+.tick-dn{color:var(--red);font-size:12px}
+.tick-sep{color:var(--border2)}
+
+/* ── SECTIONS ── */
+.sec{padding:88px 0}
+.sec-dark{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.sec-hdr{margin-bottom:52px;max-width:680px}
+.sec-tag{display:inline-block;font-size:11px;font-weight:600;font-family:var(--ff-mono);color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+h2.sh{font-family:var(--ff-head);font-size:clamp(26px,4vw,44px);font-weight:800;line-height:1.14;letter-spacing:-1px;color:var(--text);margin-bottom:12px}
+.sec-sub{font-size:17px;color:var(--text2);line-height:1.7}
+
+/* ── AD SLOTS ── */
+.ad-wrap{padding:16px 0;text-align:center}
+.ad-lbl{font-size:10px;font-family:var(--ff-mono);color:var(--text3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+.ad-ph{
+  background:var(--bg2);border:1px dashed var(--border2);border-radius:var(--r);
+  padding:22px;font-size:12px;color:var(--text3);font-family:var(--ff-mono);
+  max-width:728px;margin:0 auto;
+}
+
+/* ── BLOG CARDS ── */
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:16px}
+.bc{
+  background:rgba(13,17,23,.7);border:1px solid var(--border);border-radius:var(--r2);
+  padding:26px;transition:all .3s;position:relative;overflow:hidden;
+  backdrop-filter:blur(10px);cursor:default;
+}
+.bc::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--glow),transparent);opacity:0;transition:opacity .3s;pointer-events:none}
+.bc:hover{border-color:var(--border2);transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,.45)}
+.bc:hover::before{opacity:1}
+.bc-feat{border-color:rgba(0,212,170,.22);background:rgba(0,212,170,.03);grid-column:span 2}
+@media(max-width:680px){.bc-feat{grid-column:span 1}}
+.bc-num{font-family:var(--ff-mono);font-size:52px;font-weight:500;color:rgba(255,255,255,.04);position:absolute;top:14px;right:18px;line-height:1;pointer-events:none;user-select:none}
+.bc-tag{font-size:11px;font-family:var(--ff-mono);color:var(--accent);letter-spacing:.06em;margin-bottom:10px}
+.bc-title{font-family:var(--ff-head);font-size:17px;font-weight:700;color:var(--text);line-height:1.3;margin-bottom:9px;letter-spacing:-.2px}
+.bc-feat .bc-title{font-size:21px}
+.bc-desc{font-size:14px;color:var(--text2);line-height:1.65;margin-bottom:16px}
+.bc-topics{font-size:11px;font-family:var(--ff-mono);color:var(--text3);margin-bottom:14px}
+.bc-link{display:inline-flex;align-items:center;font-size:13px;font-weight:600;color:var(--accent);gap:4px;transition:gap .2s;text-decoration:none}
+.bc-link:hover{gap:9px}
+.bc-soon{color:var(--text3);font-style:italic;cursor:default}
+
+/* ── D3 CHART SECTION ── */
+.charts-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:8px}
+@media(max-width:768px){.charts-row{grid-template-columns:1fr}}
+.chart-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:24px;overflow:hidden}
+.chart-title{font-family:var(--ff-head);font-size:15px;font-weight:700;color:var(--text);margin-bottom:4px}
+.chart-sub{font-size:12px;color:var(--text3);margin-bottom:18px;font-family:var(--ff-mono)}
+.chart-wide{grid-column:span 2}
+@media(max-width:768px){.chart-wide{grid-column:span 1}}
+svg text{font-family:var(--ff-mono)}
+.tooltip-d3{
+  position:absolute;background:var(--bg4);border:1px solid var(--border2);
+  border-radius:var(--r);padding:10px 14px;font-size:12px;font-family:var(--ff-mono);
+  color:var(--text);pointer-events:none;opacity:0;transition:opacity .15s;z-index:50;
+  box-shadow:0 8px 24px rgba(0,0,0,.4);
+}
+
+/* ── AI CARDS ── */
+.ai-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.ai-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:26px;transition:all .3s}
+.ai-card:hover{border-color:var(--border2);transform:translateY(-3px)}
+.ai-num{font-family:var(--ff-mono);font-size:11px;color:var(--accent);margin-bottom:13px;font-weight:500}
+.ai-card h3{font-family:var(--ff-head);font-size:16px;font-weight:700;color:var(--text);margin-bottom:9px;letter-spacing:-.2px;line-height:1.3}
+.ai-card p{font-size:14px;color:var(--text2);line-height:1.65}
+
+/* ── TOOLS ── */
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.tc{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:20px 22px;transition:all .25s}
+.tc:hover{border-color:var(--border2);transform:translateY(-2px)}
+.tc-cat{font-size:10px;font-family:var(--ff-mono);color:var(--accent2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:7px}
+.tc-name{font-family:var(--ff-head);font-size:15px;font-weight:700;color:var(--text);margin-bottom:7px}
+.tc-desc{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:11px}
+.badge-free{font-size:11px;font-family:var(--ff-mono);font-weight:500;padding:3px 10px;border-radius:100px;background:rgba(0,212,170,.1);color:var(--accent)}
+.badge-paid{font-size:11px;font-family:var(--ff-mono);font-weight:500;padding:3px 10px;border-radius:100px;background:rgba(245,158,11,.1);color:var(--gold)}
+
+/* ── NEWSLETTER ── */
+.nl-sec{padding:88px 0;background:var(--bg2);border-top:1px solid var(--border)}
+.nl-inner{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+@media(max-width:768px){.nl-inner{grid-template-columns:1fr;gap:36px}}
+.nl-h{font-family:var(--ff-head);font-size:clamp(24px,4vw,40px);font-weight:800;color:var(--text);margin-bottom:12px;letter-spacing:-1px;line-height:1.15}
+.nl-sub{font-size:16px;color:var(--text2);line-height:1.7;margin-bottom:22px}
+.nl-perks{list-style:none;display:flex;flex-direction:column;gap:9px}
+.nl-perks li{font-size:14px;color:var(--text2);padding-left:20px;position:relative}
+.nl-perks li::before{content:'→';position:absolute;left:0;color:var(--accent);font-size:13px}
+.nl-form-wrap{background:var(--bg3);border:1px solid var(--border2);border-radius:var(--r2);padding:30px}
+.fgrp{margin-bottom:14px}
+.fgrp label{display:block;font-size:13px;font-weight:500;color:var(--text2);margin-bottom:7px}
+.fgrp input{
+  width:100%;background:var(--bg2);border:1px solid var(--border2);border-radius:var(--r);
+  padding:11px 15px;font-size:15px;font-family:var(--ff-body);color:var(--text);outline:none;transition:border-color .2s;
+}
+.fgrp input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(0,212,170,.1)}
+.fgrp input::placeholder{color:var(--text3)}
+.form-note{font-size:12px;color:var(--text3);text-align:center;margin-top:10px}
+.btn-full{width:100%;justify-content:center;margin-top:4px}
+
+/* ── ABOUT ── */
+.about-inner{display:grid;grid-template-columns:1fr 320px;gap:72px;align-items:center}
+@media(max-width:900px){.about-inner{grid-template-columns:1fr;gap:36px}}
+.body-p{font-size:16px;color:var(--text2);line-height:1.8;margin-bottom:15px}
+.about-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.atag{font-size:12px;font-family:var(--ff-mono);color:var(--text2);border:1px solid var(--border2);border-radius:100px;padding:4px 13px}
+.about-stats{display:flex;flex-direction:column;gap:24px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:32px}
+.as-num{font-family:var(--ff-head);font-size:40px;font-weight:800;color:var(--accent);line-height:1;margin-bottom:5px}
+.as-lbl{font-size:13px;color:var(--text2);line-height:1.5}
+
+/* ── FOOTER ── */
+.ftr{background:var(--bg2);border-top:1px solid var(--border);padding-top:64px}
+.ftr-inner{display:grid;grid-template-columns:340px 1fr;gap:72px;padding-bottom:48px}
+@media(max-width:900px){.ftr-inner{grid-template-columns:1fr;gap:36px}}
+.ftr-tagline{font-size:14px;color:var(--text3);line-height:1.7;margin-top:14px;margin-bottom:22px}
+.socials{display:flex;gap:10px}
+.soc{font-size:13px;font-weight:500;color:var(--text2);border:1px solid var(--border2);border-radius:8px;padding:6px 13px;transition:all .2s}
+.soc:hover{color:var(--accent);border-color:var(--accent)}
+.ftr-links{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+@media(max-width:600px){.ftr-links{grid-template-columns:1fr 1fr}}
+.fl-col{display:flex;flex-direction:column;gap:9px}
+.fl-title{font-size:11px;font-weight:600;font-family:var(--ff-mono);color:var(--text3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:3px}
+.fl-col a{font-size:14px;color:var(--text2);transition:color .2s}
+.fl-col a:hover{color:var(--accent)}
+.ftr-bot{border-top:1px solid var(--border);padding:18px 0}
+.ftr-bot p{font-size:12px;color:var(--text3);text-align:center;line-height:1.7}
+
+/* ── REVEAL ANIMATIONS ── */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .55s ease,transform .55s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="hdr" id="hdr">
+  <div class="wrap hdr-inner">
+    <a href="#" class="logo">
+      <div class="logo-mark">SAM</div>
+      <div class="logo-txt">Simplified AI<br><strong>Markets</strong></div>
+    </a>
+    <nav id="nav">
+      <a href="#" class="nl active">Home</a>
+      <a href="#series" class="nl">Algo Trading</a>
+      <a href="#ai" class="nl">AI & Markets</a>
+      <a href="#tools" class="nl">Tools</a>
+      <a href="#about" class="nl">About</a>
+      <a href="#newsletter" class="ncta">Free Newsletter</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="grid"></div>
+    <div class="orb o1"></div>
+    <div class="orb o2"></div>
+    <div class="orb o3"></div>
+  </div>
+  <div class="wrap hero-inner">
+    <div class="pill"><span class="dot"></span>NSE · BSE · NIFTY · AI-Powered Analysis</div>
+    <h1 class="hero-h">Where <em>Artificial Intelligence</em><br>Meets the Indian<br>Stock Market</h1>
+    <p class="hero-sub">Step-by-step guides on algorithmic trading, AI-powered strategies, and systematic investing — built for Indian retail investors. From your first moving average to a fully automated trading system.</p>
+    <div class="hero-btns">
+      <a href="blog/algo-trading-beginner-guide.html" class="btn-p">Start Learning Algo Trading →</a>
+      <a href="#newsletter" class="btn-g">Get Weekly Insights Free</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hs"><span class="hs-n">10</span><span class="hs-l">In-depth guides</span></div>
+      <div class="hs-div"></div>
+      <div class="hs"><span class="hs-n">50%+</span><span class="hs-l">NSE is algorithmic</span></div>
+      <div class="hs-div"></div>
+      <div class="hs"><span class="hs-n">Free</span><span class="hs-l">Always free to read</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- LIVE TICKER (D3 animated) -->
+<div class="ticker-wrap">
+  <div id="ticker"></div>
+</div>
+
+<!-- AD SLOT 1 -->
+<div class="wrap ad-wrap">
+  <div class="ad-lbl">Advertisement</div>
+  <div class="ad-ph">Ad · 728×90 — Replace this div with your Google AdSense &lt;ins&gt; tag after approval</div>
+</div>
+
+<!-- D3 INTERACTIVE CHARTS -->
+<section class="sec" id="charts">
+  <div class="wrap">
+    <div class="sec-hdr reveal">
+      <div class="sec-tag">Live Data Visualisation</div>
+      <h2 class="sh">Algo Trading in Indian Markets</h2>
+      <p class="sec-sub">Interactive charts showing the rise of algorithmic trading on NSE, strategy performance comparison, and global market context — hover to explore.</p>
+    </div>
+    <div class="charts-row">
+      <!-- Chart 1: NSE Algo Volume Growth -->
+      <div class="chart-card reveal">
+        <div class="chart-title">NSE Algo Trading Volume Growth</div>
+        <div class="chart-sub">% of total NSE order volume · 2010–2025 · Hover for details</div>
+        <div id="chart-growth"></div>
+      </div>
+      <!-- Chart 2: Strategy Comparison Radar -->
+      <div class="chart-card reveal">
+        <div class="chart-title">Strategy Type Comparison</div>
+        <div class="chart-sub">Difficulty vs potential return vs capital needed · Click to highlight</div>
+        <div id="chart-bubble"></div>
+      </div>
+      <!-- Chart 3: Global Algo Market Share (wide) -->
+      <div class="chart-card chart-wide reveal">
+        <div class="chart-title">Global Algo Trading Market Share — India vs World</div>
+        <div class="chart-sub">Approximate % of exchange volume that is algorithmic · 2025 estimates · Hover for details</div>
+        <div id="chart-global"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG SERIES -->
+<section class="sec sec-dark" id="series">
+  <div class="wrap">
+    <div class="sec-hdr reveal">
+      <div class="sec-tag">Featured Series</div>
+      <h2 class="sh">Algo Trading: Beginner to Pro</h2>
+      <p class="sec-sub">A complete 10-part series taking you from "what is an algorithm" to running a fully automated trading system on NSE — step by step, no finance degree required.</p>
+    </div>
+    <div class="blog-grid">
+
+      <article class="bc bc-feat reveal">
+        <div class="bc-num">01</div>
+        <div class="bc-tag">Beginner · 14 min read · Live now</div>
+        <h3 class="bc-title">What Is Algo Trading? The Complete Beginner's Guide for Indian Investors</h3>
+        <p class="bc-desc">Algorithmic trading drives 50%+ of NSE volumes. Learn what it is, how it works, the 5 main strategy types, SEBI rules, and exactly what you need to start — with real examples from NSE and BSE.</p>
+        <div class="bc-topics">Trend Following · Mean Reversion · SEBI Rules · Zerodha · Backtrader</div>
+        <a href="blog/algo-trading-beginner-guide.html" class="bc-link">Read full guide →</a>
+      </article>
+
+      <article class="bc reveal">
+        <div class="bc-num">02</div>
+        <div class="bc-tag">Beginner · 12 min read</div>
+        <h3 class="bc-title">How Algo Trading Works: Order Types, Execution & Market Mechanics</h3>
+        <p class="bc-desc">Market orders vs limit orders, how broker APIs connect to NSE, what slippage costs you, and placing your first algorithmic order.</p>
+        <span class="bc-link bc-soon">Coming soon</span>
+      </article>
+
+      <article class="bc reveal">
+        <div class="bc-num">03</div>
+        <div class="bc-tag">Beginner · 15 min read</div>
+        <h3 class="bc-title">Your First Algo Strategy: Moving Averages, RSI & Rule-Based Systems</h3>
+        <p class="bc-desc">Build your first working strategy from scratch — no coding required. Moving average crossovers, RSI rules, and your first live signal on NIFTY.</p>
+        <span class="bc-link bc-soon">Coming soon</span>
+      </article>
+
+      <article class="bc reveal">
+        <div class="bc-num">04</div>
+        <div class="bc-tag">Intermediate · 16 min read</div>
+        <h3 class="bc-title">Backtesting 101: Test Your Strategy on 10 Years of NSE Data</h3>
+        <p class="bc-desc">How to test your strategy before risking real money. Avoid curve fitting. Walk-forward analysis. Free backtesting platforms compared.</p>
+        <span class="bc-link bc-soon">Coming soon</span>
+      </article>
+
+      <article class="bc reveal">
+        <div class="bc-num">05</div>
+        <div class="bc-tag">Intermediate · 14 min read</div>
+        <h3 class="bc-title">Tools & Platforms: Zerodha Streak, Tradetron, Python & More</h3>
+        <p class="bc-desc">Every platform compared — free vs paid, no-code vs Python, which is best for your skill level and capital size.</p>
+        <span class="bc-link bc-soon">Coming soon</span>
+      </article>
+
+      <article class="bc reveal">
+        <div class="bc-num">06</div>
+        <div class="bc-tag">Intermediate · 13 min read</div>
+        <h3 class="bc-title">Risk Management: Position Sizing, Stop Losses & Drawdown Control</h3>
+        <p class="bc-desc">The only guide to risk management you'll ever need as an algo trader. Position sizing formulas, daily loss limits, and protecting your capital.</p>
+        <span class="bc-link bc-soon">Coming soon</span>
+      </article>
+
+      <article class="bc reveal">
+        <div class="bc-num">07</div>
+        <div class="bc-tag">Intermediate · 15 min read</div>
+        <h3 class="bc-title">Paper Trading to Live: Deploy Your Algo on NSE Without Losing Money</h3>
+        <p class="bc-desc">The exact process from paper trading to your first real rupee trade. API setup, monitoring, kill switches, and going live safely.</p>
+        <span class="bc-link bc-soon">Coming soon</span>
+      </article>
+
+      <article class="bc reveal">
+        <div class="bc-num">08</div>
+        <div class="bc-tag">Advanced · 18 min read</div>
+        <h3 class="bc-title">Advanced Strategies: Mean Reversion, Momentum & Pairs Trading</h3>
+        <p class="bc-desc">Statistical arbitrage, pairs trading HDFC vs ICICI, momentum strategies on Bank NIFTY, and building multi-leg options algos.</p>
+        <span class="bc-link bc-soon">Coming soon</span>
+      </article>
+
+      <article class="bc reveal">
+        <div class="bc-num">09</div>
+        <div class="bc-tag">Advanced · 12 min read</div>
+        <h3 class="bc-title">SEBI Rules for Algo Trading: Legal, Compliant & Safe in India</h3>
+        <p class="bc-desc">Everything SEBI has published on algo trading — what's legal, what's not, the 2024 tightening, and how to stay compliant.</p>
+        <span class="bc-link bc-soon">Coming soon</span>
+      </article>
+
+      <article class="bc reveal">
+        <div class="bc-num">10</div>
+        <div class="bc-tag">Pro · 20 min read</div>
+        <h3 class="bc-title">Building a Full Algo System: APIs, Architecture & Scaling to ₹1 Crore+</h3>
+        <p class="bc-desc">Full system architecture — data feeds, strategy engine, risk manager, execution layer, monitoring, and scaling your capital systematically.</p>
+        <span class="bc-link bc-soon">Coming soon</span>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- AD SLOT 2 -->
+<div class="wrap ad-wrap">
+  <div class="ad-lbl">Advertisement</div>
+  <div class="ad-ph">Ad · 336×280 — Google AdSense Rectangle</div>
+</div>
+
+<!-- AI & MARKETS -->
+<section class="sec" id="ai">
+  <div class="wrap">
+    <div class="sec-hdr reveal">
+      <div class="sec-tag">AI & Markets</div>
+      <h2 class="sh">How AI Is Reshaping Indian Markets</h2>
+      <p class="sec-sub">Beyond algo trading — understanding how machine learning, NLP, and predictive models are changing how institutions and retail investors operate in NSE and BSE.</p>
+    </div>
+    <div class="ai-grid">
+      <div class="ai-card reveal">
+        <div class="ai-num">01</div>
+        <h3>AI-powered stock screening</h3>
+        <p>How institutional funds use machine learning to screen 5,000+ NSE stocks in milliseconds — and free tools that let retail investors do the same.</p>
+      </div>
+      <div class="ai-card reveal">
+        <div class="ai-num">02</div>
+        <h3>Sentiment analysis & news trading</h3>
+        <p>How algorithms read BSE filings, RBI announcements, and news headlines in real time — and how this moves NIFTY before human traders react.</p>
+      </div>
+      <div class="ai-card reveal">
+        <div class="ai-num">03</div>
+        <h3>NIFTY prediction models</h3>
+        <p>What AI actually says about predicting NIFTY 50 — what works, what doesn't, and what research shows about machine learning in Indian equity markets.</p>
+      </div>
+      <div class="ai-card reveal">
+        <div class="ai-num">04</div>
+        <h3>Options pricing with AI</h3>
+        <p>How ML models improve on Black-Scholes for NIFTY options — volatility surface modelling, IV prediction, and building smarter options strategies.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section class="sec sec-dark" id="tools">
+  <div class="wrap">
+    <div class="sec-hdr reveal">
+      <div class="sec-tag">Free Tools & Resources</div>
+      <h2 class="sh">Everything You Need to Start</h2>
+      <p class="sec-sub">Curated tools, platforms, and resources — free and paid — for every level of algo trader in India.</p>
+    </div>
+    <div class="tools-grid">
+      <div class="tc reveal"><div class="tc-cat">Broker APIs</div><div class="tc-name">Zerodha Kite Connect</div><div class="tc-desc">India's most popular trading API. Best documentation, largest community of Indian algo traders.</div><span class="badge-paid">₹2,000/month</span></div>
+      <div class="tc reveal"><div class="tc-cat">Broker APIs</div><div class="tc-name">Upstox Developer API</div><div class="tc-desc">Free API access. REST + WebSocket. Good for beginners with active developer community.</div><span class="badge-free">Free</span></div>
+      <div class="tc reveal"><div class="tc-cat">Broker APIs</div><div class="tc-name">Angel One SmartAPI</div><div class="tc-desc">Free API, beginner-friendly documentation. Good alternative to Zerodha for starting out.</div><span class="badge-free">Free</span></div>
+      <div class="tc reveal"><div class="tc-cat">No-Code Platforms</div><div class="tc-name">Zerodha Streak</div><div class="tc-desc">Build algo strategies without code. Direct NSE/BSE execution. Free basic, ₹999 pro.</div><span class="badge-free">Free tier</span></div>
+      <div class="tc reveal"><div class="tc-cat">No-Code Platforms</div><div class="tc-name">Tradetron</div><div class="tc-desc">Drag-and-drop strategy builder. Multi-broker support. Free & paid plans available.</div><span class="badge-free">Free tier</span></div>
+      <div class="tc reveal"><div class="tc-cat">Backtesting</div><div class="tc-name">AlgoTest</div><div class="tc-desc">Options backtesting focused. NSE historical data included. Very popular among Indian quants.</div><span class="badge-free">Free tier</span></div>
+      <div class="tc reveal"><div class="tc-cat">Python Libraries</div><div class="tc-name">Backtrader</div><div class="tc-desc">Open-source Python backtesting framework. Supports NSE data. Most popular for Indian quants.</div><span class="badge-free">Free & open source</span></div>
+      <div class="tc reveal"><div class="tc-cat">Data Sources</div><div class="tc-name">NSE Historical Data</div><div class="tc-desc">Free EOD data for all NSE stocks and indices. Direct download from NSE website — no cost.</div><span class="badge-free">Free</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- AD SLOT 3 -->
+<div class="wrap ad-wrap">
+  <div class="ad-lbl">Advertisement</div>
+  <div class="ad-ph">Ad · 728×90 — Google AdSense Leaderboard</div>
+</div>
+
+<!-- NEWSLETTER -->
+<section class="nl-sec" id="newsletter">
+  <div class="wrap nl-inner">
+    <div>
+      <div class="sec-tag">Free Weekly Newsletter</div>
+      <h2 class="nl-h">Stay Ahead of the Algorithm</h2>
+      <p class="nl-sub">Every week: one AI trend affecting Indian markets + one algo trading insight + tools and resources. No spam. No stock tips. Just clear thinking.</p>
+      <ul class="nl-perks">
+        <li>Weekly AI market analysis for NSE & BSE</li>
+        <li>New algo strategies explained simply</li>
+        <li>Free tools and resources every week</li>
+        <li>First access to new guides as they publish</li>
+      </ul>
+    </div>
+    <div class="nl-form-wrap">
+      <form id="nl-form">
+        <div class="fgrp">
+          <label for="nl-name">Your name</label>
+          <input type="text" id="nl-name" placeholder="Rahul Sharma" required>
+        </div>
+        <div class="fgrp">
+          <label for="nl-email">Email address</label>
+          <input type="email" id="nl-email" placeholder="rahul@gmail.com" required>
+        </div>
+        <button type="submit" class="btn-p btn-full">Get Free Weekly Insights →</button>
+        <p class="form-note">Free forever. Unsubscribe anytime. No stock tips or spam.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="sec" id="about">
+  <div class="wrap about-inner">
+    <div>
+      <div class="sec-tag">About</div>
+      <h2 class="sh">Built for Indian Investors Who Want More Than Tips</h2>
+      <p class="body-p">Simplified AI Markets was created for one reason: most Indian investors are playing a game that has fundamentally changed — without knowing it. Over 50% of NSE trades are now algorithmic. AI is screening stocks, predicting volatility, and executing trades faster than any human can blink.</p>
+      <p class="body-p">This site exists to close that knowledge gap. Every guide is written to take a complete beginner to a confident, systematic investor — step by step, with real Indian market examples, real platforms, and real numbers.</p>
+      <p class="body-p">No guaranteed returns. No stock tips. No noise. Just clear, honest education about how markets actually work in 2025–26.</p>
+      <div class="about-tags">
+        <span class="atag">NSE & BSE focus</span>
+        <span class="atag">SEBI compliant</span>
+        <span class="atag">No stock tips</span>
+        <span class="atag">Beginner friendly</span>
+        <span class="atag">Free to read</span>
+      </div>
+    </div>
+    <div class="about-stats">
+      <div><div class="as-num">10</div><div class="as-lbl">Algo trading guides<br>beginner to pro</div></div>
+      <div><div class="as-num">100%</div><div class="as-lbl">Indian market focus<br>NSE · BSE · SEBI</div></div>
+      <div><div class="as-num">Free</div><div class="as-lbl">All guides free<br>always</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="ftr">
+  <div class="wrap ftr-inner">
+    <div>
+      <a href="#" class="logo">
+        <div class="logo-mark">SAM</div>
+        <div class="logo-txt">Simplified AI<br><strong>Markets</strong></div>
+      </a>
+      <p class="ftr-tagline">Algorithmic trading and AI investing education for Indian retail investors. NSE · BSE · NIFTY.</p>
+      <div class="socials">
+        <a href="https://www.instagram.com/simplified_markets" target="_blank" rel="noopener" class="soc">Instagram</a>
+        <a href="https://www.youtube.com/@SimplifiedAIedu" target="_blank" rel="noopener" class="soc">YouTube</a>
+        <a href="https://www.linkedin.com/in/bishwadeepgc" target="_blank" rel="noopener" class="soc">LinkedIn</a>
+      </div>
+    </div>
+    <div class="ftr-links">
+      <div class="fl-col">
+        <div class="fl-title">Algo Series</div>
+        <a href="blog/algo-trading-beginner-guide.html">Blog 1: What Is Algo Trading?</a>
+        <a href="#">Blog 2: Order Types & Execution</a>
+        <a href="#">Blog 3: Your First Strategy</a>
+        <a href="#">Blog 4: Backtesting Guide</a>
+        <a href="#">Blog 5: Tools & Platforms</a>
+      </div>
+      <div class="fl-col">
+        <div class="fl-title">Resources</div>
+        <a href="#tools">Free Tools</a>
+        <a href="#newsletter">Newsletter</a>
+        <a href="#about">About</a>
+        <a href="sitemap.xml">Sitemap</a>
+      </div>
+      <div class="fl-col">
+        <div class="fl-title">Legal</div>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Disclaimer</a>
+        <a href="#">Advertise Here</a>
+      </div>
+    </div>
+  </div>
+  <div class="ftr-bot"><div class="wrap"><p>© 2025–26 Simplified AI Markets. For educational purposes only. Not investment advice. We may earn affiliate commissions from links on this site. All strategies require independent research and risk assessment.</p></div></div>
+</footer>
+
+<!-- D3 TOOLTIP -->
+<div class="tooltip-d3" id="d3tip"></div>
+
+<script>
+// ── BURGER MENU ──
+const burger = document.getElementById('burger');
+const nav = document.getElementById('nav');
+burger.addEventListener('click', () => nav.classList.toggle('open'));
+
+// ── HEADER SHADOW ON SCROLL ──
+window.addEventListener('scroll', () => {
+  document.getElementById('hdr').style.boxShadow = window.scrollY > 20 ? '0 4px 32px rgba(0,0,0,.5)' : 'none';
+});
+
+// ── SMOOTH SCROLL ──
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); nav.classList.remove('open'); }
+  });
+});
+
+// ── NEWSLETTER FORM ──
+document.getElementById('nl-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('button');
+  btn.textContent = 'Subscribed! Check your email ✓';
+  btn.style.background = '#059669';
+  setTimeout(() => { btn.textContent = 'Get Free Weekly Insights →'; btn.style.background = ''; }, 4000);
+});
+
+// ── REVEAL ON SCROLL ──
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// ── D3 TICKER ──
+const tickers = [
+  { sym: 'NIFTY 50', val: '24,198', chg: '+0.82%', up: true },
+  { sym: 'BANK NIFTY', val: '51,342', chg: '+1.14%', up: true },
+  { sym: 'SENSEX', val: '79,724', chg: '+0.76%', up: true },
+  { sym: 'RELIANCE', val: '₹2,847', chg: '-0.23%', up: false },
+  { sym: 'HDFC BANK', val: '₹1,612', chg: '+0.91%', up: true },
+  { sym: 'INFOSYS', val: '₹1,443', chg: '+2.14%', up: true },
+  { sym: 'TCS', val: '₹3,521', chg: '-0.44%', up: false },
+  { sym: 'ICICI BANK', val: '₹1,198', chg: '+1.32%', up: true },
+  { sym: 'NIFTY IT', val: '38,542', chg: '+1.87%', up: true },
+  { sym: 'NIFTY BANK', val: '51,219', chg: '+0.98%', up: true },
+];
+const tickerEl = document.getElementById('ticker');
+// duplicate for seamless loop
+[...tickers, ...tickers].forEach(t => {
+  tickerEl.innerHTML += `<span class="tick-item"><span class="tick-sym">${t.sym}</span><span class="tick-val">${t.val}</span><span class="${t.up ? 'tick-up' : 'tick-dn'}">${t.chg}</span><span class="tick-sep">|</span></span>`;
+});
+
+// ── D3 TOOLTIP ──
+const tip = document.getElementById('d3tip');
+function showTip(e, html) {
+  tip.innerHTML = html;
+  tip.style.opacity = 1;
+  tip.style.left = (e.pageX + 14) + 'px';
+  tip.style.top = (e.pageY - 10) + 'px';
+}
+function hideTip() { tip.style.opacity = 0; }
+
+// ── D3 CHART 1: NSE Algo Volume Growth (area chart) ──
+(function() {
+  const data = [
+    {y:2010,v:8},{y:2011,v:12},{y:2012,v:18},{y:2013,v:24},
+    {y:2014,v:28},{y:2015,v:32},{y:2016,v:36},{y:2017,v:40},
+    {y:2018,v:44},{y:2019,v:46},{y:2020,v:49},{y:2021,v:51},
+    {y:2022,v:53},{y:2023,v:55},{y:2024,v:57},{y:2025,v:59}
+  ];
+  const W = document.getElementById('chart-growth').offsetWidth || 400;
+  const H = 220, mg = {t:10,r:10,b:32,l:42};
+  const w = W - mg.l - mg.r, h = H - mg.t - mg.b;
+  const svg = d3.select('#chart-growth').append('svg')
+    .attr('width','100%').attr('height',H).attr('viewBox',`0 0 ${W} ${H}`);
+  const g = svg.append('g').attr('transform',`translate(${mg.l},${mg.t})`);
+  const x = d3.scaleLinear().domain([2010,2025]).range([0,w]);
+  const y = d3.scaleLinear().domain([0,70]).range([h,0]);
+  // grid lines
+  g.append('g').attr('class','grid').call(
+    d3.axisLeft(y).ticks(5).tickSize(-w).tickFormat('')
+  ).selectAll('line').style('stroke','rgba(255,255,255,0.05)').style('stroke-width','1');
+  g.select('.grid .domain').remove();
+  // area
+  const area = d3.area().x(d=>x(d.y)).y0(h).y1(d=>y(d.v)).curve(d3.curveCatmullRom);
+  const line = d3.line().x(d=>x(d.y)).y(d=>y(d.v)).curve(d3.curveCatmullRom);
+  // gradient
+  const defs = svg.append('defs');
+  const grad = defs.append('linearGradient').attr('id','agrad').attr('x1','0').attr('y1','0').attr('x2','0').attr('y2','1');
+  grad.append('stop').attr('offset','0%').attr('stop-color','#00d4aa').attr('stop-opacity',.35);
+  grad.append('stop').attr('offset','100%').attr('stop-color','#00d4aa').attr('stop-opacity',.02);
+  g.append('path').datum(data).attr('fill','url(#agrad)').attr('d',area);
+  g.append('path').datum(data).attr('fill','none').attr('stroke','#00d4aa').attr('stroke-width',2.5).attr('d',line);
+  // axes
+  g.append('g').attr('transform',`translate(0,${h})`).call(
+    d3.axisBottom(x).ticks(6).tickFormat(d=>`'${String(d).slice(2)}`)
+  ).selectAll('text,line,path').style('fill','#475569').style('stroke','#475569').style('font-family','DM Mono,monospace').style('font-size','11px');
+  g.append('g').call(
+    d3.axisLeft(y).ticks(5).tickFormat(d=>d+'%')
+  ).selectAll('text,line,path').style('fill','#475569').style('stroke','#475569').style('font-family','DM Mono,monospace').style('font-size','11px');
+  g.select('.domain').style('stroke','rgba(255,255,255,0.08)');
+  // dots + hover
+  g.selectAll('.dot').data(data).enter().append('circle')
+    .attr('cx',d=>x(d.y)).attr('cy',d=>y(d.v)).attr('r',4)
+    .attr('fill','#00d4aa').attr('stroke','#080b12').attr('stroke-width',2)
+    .style('cursor','pointer')
+    .on('mouseover',(e,d)=>showTip(e,`<b>${d.y}</b><br>Algo volume: <span style="color:#00d4aa">${d.v}%</span>`))
+    .on('mousemove',(e,d)=>showTip(e,`<b>${d.y}</b><br>Algo volume: <span style="color:#00d4aa">${d.v}%</span>`))
+    .on('mouseout',hideTip);
+  // annotation
+  g.append('text').attr('x',x(2025)-4).attr('y',y(59)-10)
+    .attr('text-anchor','end').attr('fill','#00d4aa')
+    .style('font-size','11px').style('font-family','DM Mono,monospace').text('59% in 2025');
+})();
+
+// ── D3 CHART 2: Strategy Bubble Chart ──
+(function() {
+  const strategies = [
+    {name:'Trend Following', x:20,y:55,r:38,col:'#00d4aa',cap:'₹50K+',diff:'Beginner'},
+    {name:'Mean Reversion',  x:38,y:62,r:34,col:'#0ea5e9',cap:'₹1L+', diff:'Beginner–Mid'},
+    {name:'Stat Arbitrage',  x:65,y:75,r:30,col:'#f59e0b',cap:'₹5L+', diff:'Advanced'},
+    {name:'Arbitrage',       x:82,y:85,r:22,col:'#f43f5e',cap:'₹1Cr+',diff:'Expert'},
+    {name:'Market Making',   x:90,y:90,r:18,col:'#a855f7',cap:'₹5Cr+',diff:'Expert'},
+  ];
+  const W = document.getElementById('chart-bubble').offsetWidth || 400;
+  const H = 220;
+  const svg = d3.select('#chart-bubble').append('svg')
+    .attr('width','100%').attr('height',H).attr('viewBox',`0 0 ${W} ${H}`);
+  // axis labels
+  svg.append('text').attr('x',8).attr('y',H-8).attr('fill','#475569').style('font-size','10px').style('font-family','DM Mono,monospace').text('← Lower capital needed');
+  svg.append('text').attr('x',8).attr('y',14).attr('fill','#475569').style('font-size','10px').style('font-family','DM Mono,monospace').text('Higher return potential ↑');
+  // grid
+  svg.append('line').attr('x1',0).attr('y1',H/2).attr('x2',W).attr('y2',H/2).attr('stroke','rgba(255,255,255,0.05)').attr('stroke-width',1);
+  svg.append('line').attr('x1',W/2).attr('y1',0).attr('x2',W/2).attr('y2',H).attr('stroke','rgba(255,255,255,0.05)').attr('stroke-width',1);
+  strategies.forEach(s => {
+    const cx = (s.x / 100) * W;
+    const cy = H - (s.y / 100) * H;
+    svg.append('circle').attr('cx',cx).attr('cy',cy).attr('r',s.r)
+      .attr('fill',s.col).attr('fill-opacity',.18)
+      .attr('stroke',s.col).attr('stroke-width',1.5).style('cursor','pointer')
+      .on('mouseover',(e)=>showTip(e,`<b>${s.name}</b><br>Difficulty: ${s.diff}<br>Capital: <span style="color:${s.col}">${s.cap}</span>`))
+      .on('mousemove',(e)=>showTip(e,`<b>${s.name}</b><br>Difficulty: ${s.diff}<br>Capital: <span style="color:${s.col}">${s.cap}</span>`))
+      .on('mouseout',hideTip);
+    const lines = s.name.split(' ');
+    lines.forEach((ln,i) => {
+      svg.append('text').attr('x',cx).attr('y',cy + (i - (lines.length-1)/2)*13)
+        .attr('text-anchor','middle').attr('dominant-baseline','middle')
+        .attr('fill',s.col).style('font-size','10px').style('font-family','DM Mono,monospace').style('font-weight','500')
+        .style('pointer-events','none').text(ln);
+    });
+  });
+})();
+
+// ── D3 CHART 3: Global Algo Market Share (horizontal bar) ──
+(function() {
+  const data = [
+    {country:'USA',pct:75,col:'#0ea5e9'},
+    {country:'Japan',pct:65,col:'#0ea5e9'},
+    {country:'Europe',pct:63,col:'#0ea5e9'},
+    {country:'India 🇮🇳',pct:55,col:'#00d4aa'},
+    {country:'Singapore',pct:48,col:'#0ea5e9'},
+    {country:'Brazil',pct:35,col:'#0ea5e9'},
+    {country:'China',pct:30,col:'#0ea5e9'},
+    {country:'South Korea',pct:42,col:'#0ea5e9'},
+  ].sort((a,b)=>b.pct-a.pct);
+
+  const W = document.getElementById('chart-global').offsetWidth || 800;
+  const barH = 28, gap = 8;
+  const H = data.length * (barH + gap) + 40;
+  const mg = {t:10,r:60,b:24,l:110};
+  const w = W - mg.l - mg.r, h = H - mg.t - mg.b;
+  const svg = d3.select('#chart-global').append('svg')
+    .attr('width','100%').attr('height',H).attr('viewBox',`0 0 ${W} ${H}`);
+  const g = svg.append('g').attr('transform',`translate(${mg.l},${mg.t})`);
+  const x = d3.scaleLinear().domain([0,100]).range([0,w]);
+  const y = d3.scaleBand().domain(data.map(d=>d.country)).range([0,h]).paddingInner(0.28);
+  // grid lines
+  g.append('g').call(d3.axisBottom(x).ticks(5).tickFormat(d=>d+'%').tickSize(-h))
+    .attr('transform',`translate(0,${h})`)
+    .selectAll('line').style('stroke','rgba(255,255,255,0.05)').style('stroke-width','1');
+  g.selectAll('.domain,.tick text').style('display','none');
+  // bars bg
+  g.selectAll('.bg-bar').data(data).enter().append('rect')
+    .attr('x',0).attr('y',d=>y(d.country)).attr('width',w).attr('height',y.bandwidth())
+    .attr('fill','rgba(255,255,255,0.03)').attr('rx',5);
+  // bars animated
+  g.selectAll('.bar').data(data).enter().append('rect')
+    .attr('class','bar')
+    .attr('x',0).attr('y',d=>y(d.country)).attr('width',0).attr('height',y.bandwidth())
+    .attr('fill',d=>d.col).attr('fill-opacity',d=>d.country.includes('India')?0.9:0.5).attr('rx',5)
+    .style('cursor','pointer')
+    .on('mouseover',(e,d)=>showTip(e,`<b>${d.country}</b><br>Algo share: <span style="color:${d.col}">${d.pct}%</span> of exchange volume`))
+    .on('mousemove',(e,d)=>showTip(e,`<b>${d.country}</b><br>Algo share: <span style="color:${d.col}">${d.pct}%</span> of exchange volume`))
+    .on('mouseout',hideTip)
+    .transition().duration(900).delay((d,i)=>i*80).attr('width',d=>x(d.pct));
+  // labels left
+  g.selectAll('.lbl-left').data(data).enter().append('text')
+    .attr('x',-8).attr('y',d=>y(d.country)+y.bandwidth()/2)
+    .attr('text-anchor','end').attr('dominant-baseline','middle')
+    .attr('fill',d=>d.country.includes('India')?'#00d4aa':'#94a3b8')
+    .style('font-size','12px').style('font-family','DM Mono,monospace')
+    .style('font-weight',d=>d.country.includes('India')?'500':'400')
+    .text(d=>d.country);
+  // labels right (pct)
+  g.selectAll('.lbl-right').data(data).enter().append('text')
+    .attr('x',d=>x(d.pct)+6).attr('y',d=>y(d.country)+y.bandwidth()/2)
+    .attr('dominant-baseline','middle')
+    .attr('fill',d=>d.col)
+    .style('font-size','12px').style('font-family','DM Mono,monospace').style('font-weight','500')
+    .text(d=>d.pct+'%')
+    .attr('opacity',0).transition().duration(900).delay((d,i)=>i*80+600).attr('opacity',1);
+})();
+</script>
+</body>
+</html>
